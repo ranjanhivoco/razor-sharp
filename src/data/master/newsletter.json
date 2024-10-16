@@ -1,0 +1,13 @@
+{
+    "pageTitle": "Newsletter subscribers",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "subscribers" }],
+    "cardTitle": "FaQ",
+    "float": [
+      {
+        "title": "total subscribers",
+        "digit": "547",
+        "icon": "pending",
+        "variant": "lg purple"
+      }
+    ]
+  }

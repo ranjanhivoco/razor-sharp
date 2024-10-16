@@ -1,0 +1,10 @@
+
+{
+    "pageTitle": "Attribute list",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Attribute" }],
+    "cardTitle": "Attribute List",
+    "float": [
+        { "title": "Total Attribute", "digit": "547", "icon": "pending", "variant": "lg purple" }
+    ]
+    
+}

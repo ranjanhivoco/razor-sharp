@@ -1,0 +1,9 @@
+{
+    "pageTitle": "Blogs",
+    "breadcrumb": [{ "path": "/", "text": "home" }, {"text": "blog" }],
+    "cardTitle": "Blogs",
+    "float": [
+        { "title": "Total Blog", "digit": "547", "icon": "pending", "variant": "lg purple" }
+    ]
+
+}

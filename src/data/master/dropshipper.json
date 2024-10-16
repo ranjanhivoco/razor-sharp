@@ -1,0 +1,9 @@
+{
+    "pageTitle": "Sellers list",
+    "breadcrumb": [{ "path": "/", "text": "home" }, {"text": "seller" }],
+    "cardTitle": "Seller List",
+    "float": [
+        { "title": "Total Seller", "digit": "547", "icon": "pending", "variant": "lg purple" }
+    ]
+
+}

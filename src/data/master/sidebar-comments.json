@@ -1,0 +1,165 @@
+,
+{
+  "icon": "book",
+  "text": "Sellers",
+  "href": "/dropshippers",
+  "value": "dropshipper",
+  "submenu": [
+    { "href": "/dropshippers", "text": "Seller List" },
+    { "href": "/dropshipper-request", "text": "Seller Request" }
+  ]
+},
+{
+  "icon": "pix",
+  "text": "Inventory",
+  "value": "inventoryManager",
+  "href": "/inventory-list"
+},
+{
+  "icon": "donut_small",
+  "text": "Deals",
+  "value": "Deals",
+  "submenu": [
+    {
+      "href": "/featured-products",
+      "text": "Featured Products"
+    },
+    {
+      "href": "/top-rated-products",
+      "text": "Top Rated products"
+    },
+    {
+      "href": "/exclusive-products",
+      "text": "Exclusive Products"
+    },
+    {
+      "href": "/deal-of-the-day",
+      "text": "Deal of the Day"
+    },
+
+    {
+      "href": "/best-seller",
+      "text": "Best seller"
+    },
+    { "href": "/find-in-fast", "text": "Find in Fast" }
+  ]
+},
+{
+  "icon": "category",
+  "text": "Category",
+  "value": "categoryManager",
+  "submenu": [
+    {
+      "href": "/category",
+      "text": "Add Category"
+    },
+    {
+      "href": "/sub-category",
+      "text": " Sub Category"
+    },
+    { "href": "/add-brand", "text": "Add Brand" },
+    { "href": "/attributes", "text": "Add Attribute" },
+    { "href": "/brand-request", "text": "Brand Request" }
+  ]
+},
+{
+  "icon": "donut_small",
+  "text": "Coupons",
+  "value": "couponManager",
+  "href": "/coupons"
+},
+{
+  "icon": "book",
+  "text": "Forum",
+  "value": "Forum",
+  "submenu": [
+    {
+      "href": "/forum-category",
+      "text": "Category"
+    },
+    {
+      "href": "/forum-subcategory",
+      "text": "Subcategory"
+    },
+    {
+      "href": "/forum-post",
+      "text": "Post"
+    },
+    {
+      "href": "/customer-question",
+      "text": "Customer question"
+    }
+  ]
+},
+{
+  "icon": "book",
+  "text": "Report",
+  "value": "reportManager",
+  "href": "/reports"
+},
+{
+  "icon": "category",
+  "text": "Orders",
+  "value": "orderManager",
+  "submenu": [
+    {
+      "href": "/order-list",
+      "text": "Order List"
+    },
+    {
+      "href": "/return-replace",
+      "text": "Return/Replace List"
+    },
+    {
+      "href": "/bulk-order-list",
+      "text": "Bulk Order Request"
+    }
+  ]
+},
+{
+  "icon": "account_circle",
+  "text": "Users",
+  "value": "userManager",
+  "submenu": [
+    {
+      "href": "/user-list",
+      "text": "Users"
+    },
+    {
+      "href": "/abundant-cart-user",
+      "text": "Abundant users"
+    }
+  ]
+},
+{
+  "icon": "book",
+  "text": "Pages",
+  "value": "Pages",
+  "submenu": [
+    {
+      "href": "/homepage-cards",
+      "text": "Homepage Cards"
+    },
+    {
+      "href": "/faq-category",
+      "text": "FAQ Category"
+    },
+    {
+      "href": "/Faq",
+      "text": "FAQ"
+    },
+    {
+      "href": "/blog",
+      "text": "Blogs"
+    },
+
+    {
+      "href": "/newsletter-subscriber",
+      "text": "Newsletter Subscriber"
+    },
+    {
+      "href": "/contact-us",
+      "text": "Contact Us"
+    }
+  ]
+}

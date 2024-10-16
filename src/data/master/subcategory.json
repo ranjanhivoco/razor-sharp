@@ -1,0 +1,13 @@
+{
+  "pageTitle": "SubCategory list",
+  "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Subcategory" }],
+  "cardTitle": "Sub-Category",
+  "float": [
+    {
+      "title": "Total subcategory",
+      "digit": "547",
+      "icon": "pending",
+      "variant": "lg purple"
+    }
+  ]
+}

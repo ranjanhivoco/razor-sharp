@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Category list",
+  "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "category list" }],
+  "cardTitle": "Category",
+  "float": [
+    {
+      "title": "Total category",
+      "digit": "547",
+      "icon": "pending",
+      "variant": "lg purple"
+    }
+  ]
+}

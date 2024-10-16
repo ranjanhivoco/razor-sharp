@@ -1,0 +1,11 @@
+
+{
+    "pageTitle": "Cards list",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Cards list" }],
+    "cardTitle": "Cards",
+    "float": [
+        { "title": "Total Card", "digit": "547", "icon": "pending", "variant": "lg purple" }
+
+    ]
+    
+}

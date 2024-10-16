@@ -1,0 +1,13 @@
+{
+    "pageTitle": "FAQ",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "FAQ" }],
+    "cardTitle": "FaQ",
+    "float": [
+      {
+        "title": "Total question",
+        "digit": "547",
+        "icon": "pending",
+        "variant": "lg purple"
+      }
+    ]
+  }

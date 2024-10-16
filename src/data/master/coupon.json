@@ -1,0 +1,11 @@
+
+{
+    "pageTitle": "Coupon list",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Coupon list" }],
+    "cardTitle": "Coupon",
+    "float": [
+        { "title": "Total Coupon", "digit": "547", "icon": "pending", "variant": "lg purple" }
+
+    ]
+    
+}

@@ -1,0 +1,21 @@
+{
+    "pageTitle": "bulk order list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "Bulk-order-list" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "pending orders", "digit": "547", "icon": "pending", "variant": "lg purple" }, 
+        { "title": "shipped orders", "digit": "398", "icon": "local_shipping", "variant": "lg blue" },
+        { "title": "recieved orders", "digit": "605", "icon": "shopping_bag", "variant": "lg green" },
+        { "title": "cancelled orders", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+  "navs": [
+    {
+      "menu": [
+        {
+          "icon": "dashboard",
+          "text": "Dashboard",
+          "href": "/",
+          "value": "dashboard"
+        },
+        {
+          
+          "icon": "language",
+          "text": "Branch",
+          "href": "/branch",
+          "value": "branch"
+        },
+        {
+          "icon": "groups",
+          "text": "Customer",
+          "href": "/customer",
+          "value": "customer"
+        },
+        {
+          "icon": "notifications",
+          "text": "Notification",
+          "href": "/notification",
+          "value": "notification"
+        },
+        {
+          "icon": "list",
+          "text": "Upselling Items",
+          "href": "/upselling-items",
+          "value": "upselling_items"
+        }
+      ]
+    }
+  ],
+  "button": {
+    "icon": "lock",
+    "path": "/login",
+    "text": "logout",
+    "color": "yellow"
+  }
+}

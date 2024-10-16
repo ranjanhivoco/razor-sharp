@@ -1,0 +1,21 @@
+{
+    "pageTitle": "brand request list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "brand request" }
+
+    ],
+    "float": [
+        { "title": "Total Sellers", "digit": "547", "icon": "pending", "variant": "lg purple" }, 
+        { "title": "approved Sellers", "digit": "605", "icon": "check_circle", "variant": "lg green" }
+    ],
+    "filter":[
+        { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+        { "label": "role by", "option": ["admin", "member", "client", "manager", "vendor"] },
+        { "label": "status by", "option": ["approved", "pending", "blocked"] },
+        { "label": "search by", "type": "search", "placeholder": "id / name / email / number" }
+    ],
+    
+    "role": ["founder", "admin", "member", "client", "vendor"],
+    "status": ["approved", "pending", "blocked"]
+}

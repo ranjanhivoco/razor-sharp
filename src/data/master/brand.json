@@ -1,0 +1,10 @@
+
+{
+    "pageTitle": "Brand list",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Brand list" }],
+    "cardTitle": "Brand",
+    "float": [
+        { "title": "Total Brand", "digit": "547", "icon": "pending", "variant": "lg purple" }
+    ]
+    
+}

@@ -1,0 +1,43 @@
+export { default as Admin } from "./Admin";
+export { default as Analytics } from "./Analytics";
+export { default as BlankPage } from "./BlankPage";
+export { default as CRM } from "./CRM";
+export { default as Ecommerce } from "./Ecommerce";
+export { default as ForgotPassword } from "./ForgotPassword";
+export { default as InvoiceDetails } from "./InvoiceDetails";
+export { default as InvoiceList } from "./InvoiceList";
+export { default as Login } from "./Login";
+export { default as Message } from "./Message";
+export { default as MyAccount } from "./MyAccount";
+export { default as Notification } from "./Notification";
+export { default as OrderList } from "./OrderList";
+export { default as InventoryList } from "./InventoryList";
+export { default as ProductUpload } from "./ProductUpload";
+export { default as ProductView } from "./ProductView";
+export { default as Register } from "./Register";
+export { default as Settings } from "./Settings";
+export { default as UserList } from "./UserList";
+export { default as UserProfile } from "./UserProfile";
+export { default as OtpVerification } from "./OtpVerification";
+export { default as ResetPassword } from "./ResetPassword";
+export { default as Coupons } from "./Coupons";
+export { default as Dropshippers } from "./Dropshippers";
+export { default as Category } from "./Category";
+export { default as SubCategory } from "./SubCategory";
+export { default as SellerRequest } from "./SellerRequest";
+export { default as SellerView } from "./SellerView";
+export { default as Brand } from "./Brand";
+export { default as Attributes } from "./Attributes";
+export { default as BrandRequest } from "./BrandRequest";
+export { default as Faq } from "./Faq";
+export { default as FaqCategory } from "./FaqCategory";
+export { default as Newsletter } from "./Newsletter";
+export { default as Reports } from "./Reports";
+export { default as HomepageCards } from "./HomepageCards";
+export { default as ContactUs } from "./ContactUs";
+export { default as ContactView } from "./ContactView";
+export { default as Blogs } from "./Blogs";
+export { default as BulkOrderRequest } from "./BulkOrderRequest";
+export {default as BulkRequestview} from "./BulkRequestView"
+export {default as FindinFast} from "./FindinFastCategory"
+export { default as RatingReview} from './RatingReview'

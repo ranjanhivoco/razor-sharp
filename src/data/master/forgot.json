@@ -1,0 +1,27 @@
+{
+    "logo": {
+        "path": "/",
+        "src": "images/fazter-logo.svg",
+        "alt": "blue",
+        "name": "Fazter"
+    },
+    "pattern": { 
+        "src": "images/background.png", 
+        "alt": "line-pattern" 
+    },
+    "title": "Forgot the Password",
+    "input": [
+        { 
+            "icon": "email", 
+            "type": "email", 
+            "placeholder": "Enter your email",
+            "fieldSize": "h-sm"
+        }
+    ],
+    "button": { "type": "button", "text": "Send OTP", "fieldSize": "h-sm" },
+    "navigate": {
+        "title": "Remember the password?",
+        "path": "/login",
+        "text": "login"
+    }
+}

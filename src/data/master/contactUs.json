@@ -1,0 +1,13 @@
+{
+    "pageTitle": "Contact Us",
+    "breadcrumb": [{ "path": "/", "text": "home" }, { "text": "Contact us" }],
+    "cardTitle": "contact us",
+    "float": [
+        {
+          "title": "Total Queries",
+          "digit": "547",
+          "icon": "account_circle",
+          "variant": "lg purple"
+        }
+      ]
+  }

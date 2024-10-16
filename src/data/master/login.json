@@ -1,0 +1,76 @@
+{
+    "logo": {
+        "path": "/",
+        "src": "images/logo.png",
+        "alt": "blue",
+        "name": "Fazter"
+    },
+    "pattern": { 
+        "src": "images/background.png", 
+        "alt": "line-pattern" 
+    },
+    "title": "Login to Hong's Dashboard",
+    "input": [
+        { 
+            "icon": "email", 
+            "type": "email", 
+            "placeholder": "Enter your email",
+            "fieldSize": "w-100 h-sm"
+        },
+        { 
+            "icon": "lock", 
+            "type": "password", 
+            "placeholder": "Enter your password",
+            "fieldSize": "w-100 h-sm",
+            "passwordVisible" : true
+        },
+        {
+            "icon": "account_circle",
+            "type": "text",
+            "placeholder": "Enter your name",
+            "fieldSize": "h-sm"
+          },
+          {
+            "icon": "email",
+            "type": "email",
+            "placeholder": "Enter your email",
+            "fieldSize": "h-sm"
+          },
+          {
+            "icon": "phone",
+            "type": "Number",
+            "placeholder": "Enter your Mobile Number",
+            "fieldSize": "h-sm"
+          },
+          {
+            "icon": "lock",
+            "type": "password",
+            "placeholder": "Enter your password",
+            "fieldSize": "h-sm",
+            "passwordVisible": true
+          },
+          {
+            "icon": "verified_user",
+            "type": "password",
+            "placeholder": "Enter repeat password",
+            "fieldSize": "h-sm",
+            "passwordVisible": true
+          }
+    ],
+    "button": { "type": "submit", "text": "sign in", "fieldSize": "h-sm" },
+    "forgot": { "path": "/forgot-password", "text": "forgot password?" },
+    "divide": { "text": "or" },
+    "connect": [
+        { 
+            "path": "#", 
+            "classes": "google h-sm", 
+            "icon": "icofont-google-plus", 
+            "text": "Continue with Google" 
+        }
+    ],
+    "navigate": {
+        "title": "Don't have an account?",
+        "path": "/register",
+        "text": "register"
+    }
+}
