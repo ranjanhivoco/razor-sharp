@@ -29,7 +29,7 @@
         },
         {
           "icon": "list",
-          "text": "Upselling Items",
+          "text": "Upsell Insights",
           "href": "/upselling-items",
           "value": "upselling_items"
         }

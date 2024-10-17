@@ -34,7 +34,7 @@ const CustomDropDown = () => {
     <>
       <Col style={{marginBottom:"-10px"}}  xs={10} sm={10} md={10} xl={10}></Col>
       <Col
-        style={{ display: "flex", justifyContent: "end",marginBottom:"-10px" }}
+        style={{ display: "flex", justifyContent: "end",marginBottom:"-20px" }}
         xs={2}
         sm={2}
         md={2}

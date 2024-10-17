@@ -11,6 +11,7 @@ import CustomBarChart from "../../components/charts/CustomBarChart";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { convertDateFormat } from "../../components/helper/helper";
 
 const Notification = () => {
   
@@ -66,7 +67,7 @@ const Notification = () => {
             <Text>{index + 1}</Text>
           </Box>
         </Td>
-        <Td>{item.today_date}</Td>
+        <Td>{convertDateFormat(item.today_date)}</Td>
         <Td>{item.time_of_message}</Td>
         <Td>{item.message}</Td>
         <Td>{item.branch_name}</Td>
@@ -114,7 +115,7 @@ const Notification = () => {
                     <Tr>
                       <Th>
                         <Box className="mc-table-check">
-                          <Text>SR NO.</Text>
+                          <Text>S. NO.</Text>
                         </Box>
                       </Th>
                       <Th>DATE</Th>

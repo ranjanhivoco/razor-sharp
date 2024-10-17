@@ -106,7 +106,7 @@ const Branch = () => {
                     <Tr>
                       <Th>
                         <Box className="mc-table-check">
-                          <Text>SR NO.</Text>
+                          <Text>S. NO.</Text>
                         </Box>
                       </Th>
                       <Th>Branch</Th>

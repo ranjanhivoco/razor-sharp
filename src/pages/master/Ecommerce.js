@@ -35,19 +35,18 @@ export default function Ecommerce() {
   const [lastMonthSalesCount, setLastMonthSalesCount] = useState(0);
 
   const mockData = [
-    { message: "January", message_count: 30 },
-    { message: "February", message_count: 50 },
-    { message: "March", message_count: 40 },
-    { message: "April", message_count: 80 },
-    { message: "May", message_count: 60 },
-    { message: "June", message_count: 90 },
-    { message: "July", message_count: 70 },
-    { message: "August", message_count: 100 },
-    { message: "September", message_count: 50 },
-    { message: "October", message_count: 65 },
-    { message: "November", message_count: 85 },
-    { message: "December", message_count: 95 },
+    { date: "01/10/24", message_count: 30 },
+    { date: "02/10/24", message_count: 50 },
+    { date: "03/10/24", message_count: 40 },
+    { date: "04/10/24", message_count: 80 },
+    { date: "05/10/24", message_count: 60 },
+    { date: "06/10/24", message_count: 90 },
+    { date: "07/10/24", message_count: 70 },
+    { date: "08/10/24", message_count: 100 },
+    { date: "09/10/24", message_count: 50 },
+    { date: "10/10/24", message_count: 65 }
   ];
+  
 
   const mcdBranches = [
     { name: "Sec 63, Noida", location: "Noida, Uttar Pradesh" },
@@ -162,7 +161,7 @@ export default function Ecommerce() {
                 // icon="account_circle"
                 title="total orders"
                 // number={usersCount}
-                number={8}
+                number={913}
                 variant="purple"
                 percent="+ 95%"
                 compare="last month"
@@ -175,7 +174,7 @@ export default function Ecommerce() {
                 // icon="person_outline_outlined"
                 title="Total Customers"
                 // number={orderCount}
-                number={10}
+                number={1273}
                 variant="blue"
                 percent="- 35%"
                 compare="last month"
@@ -185,9 +184,9 @@ export default function Ecommerce() {
             <Col>
               <EcommerceCard
                 icon="trending_up"
-                title="Total Upsell Attempts"
+                title="Upsell Attempts"
                 // number={selllerProductCount}
-                number={2}
+                number={509}
                 variant="pink"
                 percent="- 25%"
                 compare="last month"
@@ -196,10 +195,10 @@ export default function Ecommerce() {
 
             <Col>
               <EcommerceCard
-                icon="trending_down"
-                title="Total Upsell Non Attempts"
+                icon="trending_flat"
+                title="Successful Upsell Attempts"
                 // number={categoryCount}
-                number={8}
+                number={305}
                 variant="yellow"
                 percent="+ 95%"
                 compare="last month"
@@ -211,7 +210,7 @@ export default function Ecommerce() {
                 icon="notifications_none"
                 title="Total Notifications"
                 // number={sellerCount}
-                number={1}
+                number={56}
                 variant="blue"
                 percent="+ 95%"
                 compare="last month"
@@ -223,7 +222,7 @@ export default function Ecommerce() {
                 icon="store"
                 title="Total Branches"
                 // number={sellerCount}
-                number={2}
+                number={1}
                 variant="purple"
                 percent="+ 95%"
                 compare="last month"

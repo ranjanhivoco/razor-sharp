@@ -3,7 +3,7 @@ import { PieChart, Pie, Tooltip, Cell ,Legend ,ResponsiveContainer } from "recha
 
 
 
-const COLORS = ["#3CAB00B2", "#FF2E1EE5"];
+const COLORS = ["#62B170", "#E97D30"];
 const renderColorfulLegendText = (value, entry) => {
   return (
     <span style={{ color: "#000", fontWeight: 400, fontSize: "12px" }}>
@@ -15,12 +15,13 @@ const renderColorfulLegendText = (value, entry) => {
 const CustomPieChart = ({attempted,successfull}) => {
  
   const [data,setData] = useState( [
-    { name: "Attempts", value: 66 },
-    { name: "Successfull", value: 34 },
+    { name: "Upsell Successfull", value: 34 },
+    { name: "Upsell Attempts", value: 66 },
+
   ])
 
   useEffect(()=>{
-    setData([{...data[0],value:Number(attempted)},{...data[1],value:Number(successfull)}])
+    setData([{...data[0],value:Number(successfull)},{...data[1],value:Number(attempted)}])
   
    },[attempted,successfull])
 

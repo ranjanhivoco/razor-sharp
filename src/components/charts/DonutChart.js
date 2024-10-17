@@ -18,8 +18,8 @@ const DonutChart = ({maleCount,femaleCount}) => {
 
   
   const [data,setData] = useState( [
-    { name: "Females", value:Number(femaleCount), fill: "#EE396A" },
-    { name: "Males", value:Number(maleCount), fill: "#4287FF" },
+    { name: "Female", value:Number(femaleCount), fill: "#EE396A" },
+    { name: "Male", value:Number(maleCount), fill: "#4287FF" },
   ])
 
  useEffect(()=>{

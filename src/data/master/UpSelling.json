@@ -2,7 +2,7 @@
     "pageTitle": "UPSELLING",
     "breadcrumb": [
         { "path": "/", "text": "home" },
-        { "text": "upselling items" }
+        { "text": "Upsell Insights" }
     ],
     "dotsMenu": {
         "dots": "more_horiz",

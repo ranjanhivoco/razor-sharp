@@ -14,6 +14,7 @@ import CustomPieChart from "../../components/charts/CustomPieChart";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CustomDropDown from "../../components/elements/CustomDropDown";
+import { convertDateFormat } from "../../components/helper/helper";
 
 
 const UpSelling = () => {
@@ -153,7 +154,7 @@ const UpSelling = () => {
               <Text>{index + 1}</Text>
             </Box>
           </Td>
-          <Td>{item?.today_date}</Td>
+          <Td>{convertDateFormat(item.today_date)}</Td>
           <Td>{item?.upsell_attempted}</Td>
           <Td>{item?.upsell_successful}</Td>
         </Tr>
@@ -192,7 +193,7 @@ const UpSelling = () => {
               <Row xs={1} sm={3}>
                 <Col>
                   <EcommerceCard
-                    icon="thumb_up"
+                    icon="trending_up"
                     // use this syntax for two word iconName (icon_name)
                     title={upsellData?.count?.total_upsell_attempted}
                     titleStyle={{
@@ -203,15 +204,15 @@ const UpSelling = () => {
                       textAlign: "left",
                     }}
                     // number={usersCount}
-                    variant="green"
+                    variant="purple"
                     // percent="+ 95%"
-                    compare="Upselling Attempts"
+                    compare="Upsell Attempts"
                   />{" "}
                 </Col>
 
                 <Col>
                   <EcommerceCard
-                    icon="thumb_down"
+                    icon="thumb_up"
                     title={upsellData?.count?.total_upsell_successful}
                     titleStyle={{
                       fontFamily: "Inter",
@@ -221,9 +222,9 @@ const UpSelling = () => {
                       textAlign: "left",
                     }}
                     // number={usersCount}
-                    variant="purple"
+                    variant="green"
                     // percent="+ 95%"
-                    compare="upsell successfull"
+                    compare="upsell successful"
                   />{" "}
                 </Col>
 
@@ -238,12 +239,12 @@ const UpSelling = () => {
                         <Tr>
                           <Th>
                             <Box className="mc-table-check">
-                              <Text>SR NO.</Text>
+                              <Text>S. NO.</Text>
                             </Box>
                           </Th>
                           <Th>DATE</Th>
-                          <Th>UPSELLING ATTEMPTS</Th>
-                          <Th>UPSELLING SUCCESSFULL</Th>
+                          <Th>UPSELL ATTEMPTS</Th>
+                          <Th>UPSELL SUCCESSFUL</Th>
                         </Tr>
                       </Thead>
                       <Tbody className="mc-table-body even">

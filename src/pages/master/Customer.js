@@ -62,7 +62,7 @@ const Customer = () => {
         </Td>
         <td>{item.male_count}</td>
         <td>{item.female_count}</td>
-        <td>{item.avg_group_size}</td>
+        <td>{Math.round(item.avg_group_size)}</td>
       </Tr>
     );
   });
@@ -135,7 +135,7 @@ const Customer = () => {
                     // number={usersCount}
                     variant="blue"
                     // percent="+ 95%"
-                    compare="Males"
+                    compare="Male"
                   />{" "}
                 </Col>
 
@@ -153,7 +153,7 @@ const Customer = () => {
                     // number={usersCount}
                     variant="purple"
                     // percent="+ 95%"
-                    compare="Females"
+                    compare="Female"
                   />{" "}
                 </Col>
 
@@ -181,7 +181,7 @@ const Customer = () => {
                         <Tr>
                           <Th>
                             <Box className="mc-table-check">
-                              <Text>SR NO.</Text>
+                              <Text>S. NO.</Text>
                             </Box>
                           </Th>
                           <Th>MALE COUNT</Th>
