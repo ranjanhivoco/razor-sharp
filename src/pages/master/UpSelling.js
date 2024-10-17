@@ -231,7 +231,7 @@ const UpSelling = () => {
                   <CustomPieChart attempted ={upsellData?.count?.total_upsell_attempted} successfull={upsellData?.count?.total_upsell_successful} />
                 </Col>
 
-                <Col xs={4} sm={12} xl={12}>
+                <Col xs={12} sm={12} xl={12}>
                   <div class="col-xl-12" id="category-data">
                     <Table className="mc-table product">
                       <Thead className="mc-table-head primary">

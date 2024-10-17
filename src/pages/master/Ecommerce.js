@@ -24,8 +24,6 @@ import CustomDateRangePicker from "../../components/elements/DateRangePicker";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import WordCloudComponent from "../../components/elements/WordCloudComponent";
 
-
-
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
   const [categoryCount, setCategoryCount] = useState(0);
@@ -35,7 +33,6 @@ export default function Ecommerce() {
   const [orderCount, setOrderCount] = useState(0);
   const [salesCount, setSalesCount] = useState(0);
   const [lastMonthSalesCount, setLastMonthSalesCount] = useState(0);
-
 
   const mockData = [
     { message: "January", message_count: 30 },
@@ -49,7 +46,7 @@ export default function Ecommerce() {
     { message: "September", message_count: 50 },
     { message: "October", message_count: 65 },
     { message: "November", message_count: 85 },
-    { message: "December", message_count: 95 }
+    { message: "December", message_count: 95 },
   ];
 
   const mcdBranches = [
@@ -76,15 +73,8 @@ export default function Ecommerce() {
   // }, []);
 
   // useEffect(() => {
-    
+
   // },[])
-
-
-
-
-
-
-
 
   const getAllCouponsList = async () => {
     const result = await hostedCouponAxios.get("/get-all-coupon", {
@@ -145,7 +135,6 @@ export default function Ecommerce() {
     <PageLayout>
       <Row>
         <CustomDropDown />
-
         <Col xl={12}>
           <Box style={{ background: "#FFF5D580" }} className="mc-card">
             <Breadcrumb title={data?.pageTitle}>
@@ -164,9 +153,9 @@ export default function Ecommerce() {
           </Box>
         </Col>
 
-        <Col xs={4} md={4} xl={4}>
-          <Row xs={1} sm={1} md={1}>
-            {/* <Col>
+        <Col xs={4} sm={8} md={8} xl={8}>
+          <Row xs={1} sm={2} md={2} xl={2}>
+            <Col>
               <EcommerceCard
                 // icons are not getting centered
                 icon="shopping_cart"
@@ -178,7 +167,7 @@ export default function Ecommerce() {
                 percent="+ 95%"
                 compare="last month"
               />
-            </Col> */}
+            </Col>
 
             <Col>
               <EcommerceCard
@@ -204,34 +193,7 @@ export default function Ecommerce() {
                 compare="last month"
               />
             </Col>
-          </Row>
-        </Col>
 
-        <Col
-        //  style={{ border: "1px solid black" }}
-          xs={4} sm={4} md={8} xl={8}>
-          <Row
-          style={{height:"400px" }}
-          //  xs={1} sm={1} md={1}
-          >
-            <Col>
-              <WordCloudComponent />
-
-              {/* <SalesCard
-            title={data?.sales.title}
-            amount={`$${salesCount?.toFixed()}`}
-            percent={`${salesPercentageCard?.toFixed(2)} %`}
-            trendIcon={data?.sales.trendIcon}
-            dotsMenu={data?.sales.dotsMenu}
-            compare={`$${lastMonthSalesCount?.toFixed()} in Last Month`}
-            chart={data?.sales.chart}
-          /> */}
-            </Col>
-          </Row>
-        </Col>
-
-        <Col xs={12} md={12} xl={12}>
-          <Row xs={1} sm={2} md={3}>
             <Col>
               <EcommerceCard
                 icon="trending_down"
@@ -260,7 +222,7 @@ export default function Ecommerce() {
               <EcommerceCard
                 icon="store"
                 title="Total Branches"
-                // number={couponCount}
+                // number={sellerCount}
                 number={2}
                 variant="purple"
                 percent="+ 95%"
@@ -270,16 +232,16 @@ export default function Ecommerce() {
           </Row>
         </Col>
 
-        {/* <Col xl={12}>
-          <ProductsCard
-            title={data?.products.title}
-            dotsMenu={data?.products.dotsMenu}
-            table={data?.products.table}
-          />
-        </Col> */}
+        <Col xs={4} sm={4} md={4} xl={4}>
+          <WordCloudComponent />
+        </Col>
 
         <Col xl={12}>
-          <CustomBarChart background="#FFF5D5" barColor="#F8BC00" data={mockData} />
+          <CustomBarChart
+            background="#FFF5D5"
+            barColor="#F8BC00"
+            data={mockData}
+          />
         </Col>
 
         <Col xl={12}>
@@ -299,13 +261,10 @@ export default function Ecommerce() {
           </Row>
         </Col>
 
-        <Col
-          // style={{ border: "1px solid red" }}
-          lg={6}
-        ></Col>
+        {/* <Col lg={6}></Col>
         <Col lg={6}>
           <DateRangePicker />
-        </Col>
+        </Col> */}
       </Row>
     </PageLayout>
   );

@@ -107,8 +107,8 @@ const Notification = () => {
               <CustomBarChart background="#77DD7729" barColor="#3CAB00" data={notificationGraphData} />
             </Col>
 
-            <Col xl={12}>
-              <div class="col-xl-12" id="category-data">
+            <Col xs={12} sm={12} xl={12}>
+            <div class="col-xl-12" id="category-data">
                 <Table className="mc-table product">
                   <Thead className="mc-table-head primary">
                     <Tr>

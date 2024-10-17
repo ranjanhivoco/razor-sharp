@@ -32,8 +32,14 @@ const CustomDropDown = () => {
   
   return (
     <>
-      <Col xs={10} sm={10} md={8} xl={9}></Col>
-      <Col xs={2} sm={2} md={4} xl={3}>
+      <Col style={{marginBottom:"-10px"}}  xs={10} sm={10} md={10} xl={10}></Col>
+      <Col
+        style={{ display: "flex", justifyContent: "end",marginBottom:"-10px" }}
+        xs={2}
+        sm={2}
+        md={2}
+        xl={2}
+      >
         <Dropdown>
           <Dropdown.Toggle
             className="text-black border-dark border-1"
@@ -41,8 +47,9 @@ const CustomDropDown = () => {
             id="dropdown-basic"
           >
             {/* Branch */}
-            {branchData && branchData.length > 0 ? branchData[0].branch_name : "Branch"}
-
+            {branchData && branchData.length > 0
+              ? branchData[0].branch_name
+              : "Branch"}
           </Dropdown.Toggle>
 
           <Dropdown.Menu style={{}}>

@@ -99,7 +99,7 @@ const Customer = () => {
           <Row>
             <CustomDropDown />
             <Col xl={12}>
-              <DotsMenu dots={""} dropdown={dropdownItems} />
+              {/* <DotsMenu dots={""} dropdown={dropdownItems} /> */}
 
               <Box style={{ background: "#FFF5D580" }} className="mc-card">
                 <Breadcrumb title={data?.pageTitle}>
@@ -174,7 +174,7 @@ const Customer = () => {
                 </Col>
 
 
-                <Col xs={4} sm={12} xl={12}>
+                <Col xs={12} sm={12} xl={12}>
                   <div class="col-xl-12" id="category-data">
                     <Table className="mc-table product">
                       <Thead className="mc-table-head primary">

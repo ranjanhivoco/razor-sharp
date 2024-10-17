@@ -99,7 +99,7 @@ const Branch = () => {
               </Box>
             </Col>
 
-            <Col xl={12}>
+            <Col xs={12} sm={12} md={12} xl={12}>
               <div class="col-xl-12" id="category-data">
                 <Table className="mc-table product">
                   <Thead className="mc-table-head primary">
