@@ -212,7 +212,7 @@ const UpSelling = () => {
 
                 <Col>
                   <EcommerceCard
-                    icon="thumb_up"
+                    icon="trending_flat"
                     title={upsellData?.count?.total_upsell_successful}
                     titleStyle={{
                       fontFamily: "Inter",
