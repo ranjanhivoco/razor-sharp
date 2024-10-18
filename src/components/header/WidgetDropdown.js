@@ -72,7 +72,7 @@ export default function WidgetDropdown({
       <Dropdown.Menu align="end" className="mc-dropdown-paper">
         <Box className="mc-header-dropdown-group">
           <CardHeader
-            title={`order Notification (${orderNumber})`}
+            title={`Notification (${orderNumber})`}
             dotsMenu={dropdown?.dotsMenu}
           />
           {orderNumber ? (
@@ -117,7 +117,7 @@ export default function WidgetDropdown({
               handleViewAllNotification();
             }}
           >
-            View All Order
+            View All Notifications
           </Button>
         </Box>
       </Dropdown.Menu>

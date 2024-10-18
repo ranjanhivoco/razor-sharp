@@ -23,6 +23,8 @@ import DateRangePicker from "../../components/elements/DateRangePicker";
 import CustomDateRangePicker from "../../components/elements/DateRangePicker";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import WordCloudComponent from "../../components/elements/WordCloudComponent";
+import StackChart from "../../components/charts/StackChart";
+import AddNameAndDate from "../../components/elements/AddNameAndDate";
 
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
@@ -44,9 +46,8 @@ export default function Ecommerce() {
     { date: "07/10/24", message_count: 70 },
     { date: "08/10/24", message_count: 100 },
     { date: "09/10/24", message_count: 50 },
-    { date: "10/10/24", message_count: 65 }
+    { date: "10/10/24", message_count: 65 },
   ];
-  
 
   const mcdBranches = [
     { name: "Sec 63, Noida", location: "Noida, Uttar Pradesh" },
@@ -236,18 +237,49 @@ export default function Ecommerce() {
         </Col>
 
         <Col xl={12}>
-          <CustomBarChart
-            background="#FFF5D5"
-            barColor="#F8BC00"
-            data={mockData}
-          />
+          <Box
+            style={{ background: "#FFF5D5", borderRadius: "8px" }}
+            className="mc-card"
+          >
+            <Row>
+              <Col md={12}>
+                <AddNameAndDate title={"Customer Satisfaction"} />
+              </Col>
+              <Col md={12}>
+                <StackChart />
+              </Col>
+            </Row>
+          </Box>
         </Col>
+
+        {/*change  below this  */}
+        {/* <Col style={{ borderRadius: "8px", background: "#FFF5D5" }} xl={12}>
+          <Col md={12}>
+            <AddNameAndDate title={"Customer Satisfaction"} />
+          </Col>
+
+          <Col md={12}>
+            <StackChart />
+          </Col>
+        </Col> */}
+
+        {/* above this  code is working but the styling isnt aligned with rest of the componets on the same file , use the rest code's context and react bootstrap suggest better way to write this code  */}
+
+        {/* <Col style={{ maxHeight: "300px", borderRadius: "8px" }} md={6} xl={6}>
+          <AddNameAndDate hideDate={true} title={"Customer Satisfaction"} />
+
+          <DonutChart maleCount={10} femaleCount={6} />
+        </Col> */}
 
         <Col xl={12}>
           <Row xs={1} sm={2} md={2} lg={2}>
+            {/* <Col md={6}>
+              <AddNameAndDate title={"Customer Satisfaction"} />
+            </Col> */}
             <Col style={{ height: "260px" }} xs={12} md={6}>
               <DonutChart maleCount={10} femaleCount={6} />
             </Col>
+
             <Col style={{ height: "260px" }} xs={12} md={6}>
               <CustomPieChart attempted={156} successfull={125} />
             </Col>

@@ -1,11 +1,18 @@
-import CustomDatePicker from "./CustomDatePicker";
 import DateRangePicker from "./DateRangePicker";
 
-const AddNameAndDate = ({ title }) => {
+const AddNameAndDate = ({ title,hideDate }) => {
   return (
-    <div>
+    <div
+      style={{
+        padding: "10px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
       <h3
         style={{
+          color: "black",
           fontFamily: "Inter",
           fontSize: "16px",
           fontWeight: 500,
@@ -16,8 +23,8 @@ const AddNameAndDate = ({ title }) => {
         {title}
       </h3>
 
-      <DateRangePicker />
-      </div>
+      {!hideDate && <DateRangePicker />}
+    </div>
   );
 };
 

@@ -7147,3 +7147,8 @@ p.card-text {
 .react-datepicker-wrapper >div> input{
   max-width: 150px;
 }
+
+.custom-datepicker::placeholder {
+  color: black;
+  opacity: 1;
+}

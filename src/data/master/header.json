@@ -327,7 +327,7 @@
     },
     "notify": {
         "icon": "notifications", 
-        "title": "Order notification",  
+        "title": "notification",  
         "addClass": "notify"
 
     },
