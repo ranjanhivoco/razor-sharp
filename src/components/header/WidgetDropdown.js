@@ -46,16 +46,7 @@ export default function WidgetDropdown({
   };
 
   const handleViewAllNotification = async () => {
-    await hostedOrderAxios
-      .get(`/new-orders-viewall`, {
-        headers: authHeader(),
-      })
-      .then(async (response) => {
-        if (response.status === 200) {
-          // window.location.reload();
-          await navigate("/order-list");
-        }
-      });
+    navigate("/notification");
   };
 
   return (
@@ -117,7 +108,7 @@ export default function WidgetDropdown({
               handleViewAllNotification();
             }}
           >
-            View All Notifications
+            View All
           </Button>
         </Box>
       </Dropdown.Menu>
