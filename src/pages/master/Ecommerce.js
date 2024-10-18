@@ -25,6 +25,9 @@ import CustomDropDown from "../../components/elements/CustomDropDown";
 import WordCloudComponent from "../../components/elements/WordCloudComponent";
 import StackChart from "../../components/charts/StackChart";
 import AddNameAndDate from "../../components/elements/AddNameAndDate";
+import DashBoardDonut from "../../components/elements/DashBoardDonut";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import DashBoardPieChart from "../../components/charts/DashBoardPieChart";
 
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
@@ -252,30 +255,33 @@ export default function Ecommerce() {
           </Box>
         </Col>
 
-        {/*change  below this  */}
-        {/* <Col style={{ borderRadius: "8px", background: "#FFF5D5" }} xl={12}>
-          <Col md={12}>
-            <AddNameAndDate title={"Customer Satisfaction"} />
-          </Col>
+        <Col md={6} xl={6}>
+          <Box
+            style={{ borderRadius: "8px", background: "#FFF5D5" }}
+            className="mc-card"
+          >
+            <AddNameAndDate hideDate={false} title={"Customer"} />
+            <Col style={{ height: "260px" }} xs={12} md={12}>
+              <DashBoardDonut maleCount={10} femaleCount={6} />
+            </Col>
+          </Box>
+        </Col>
 
-          <Col md={12}>
-            <StackChart />
-          </Col>
-        </Col> */}
+        <Col md={6} xl={6}>
+          <Box
+            style={{ borderRadius: "8px", background: "#FFF5D5" }}
+            className="mc-card"
+          >
+            <AddNameAndDate hideDate={false} title={"Upsell Attempts"} />
 
-        {/* above this  code is working but the styling isnt aligned with rest of the componets on the same file , use the rest code's context and react bootstrap suggest better way to write this code  */}
+            <Col style={{ height: "260px" }} xs={12} md={12}>
+              <DashBoardPieChart attempted={156} successfull={125} />
+            </Col>
+          </Box>
+        </Col>
 
-        {/* <Col style={{ maxHeight: "300px", borderRadius: "8px" }} md={6} xl={6}>
-          <AddNameAndDate hideDate={true} title={"Customer Satisfaction"} />
-
-          <DonutChart maleCount={10} femaleCount={6} />
-        </Col> */}
-
-        <Col xl={12}>
+        {/* <Col xl={12}>
           <Row xs={1} sm={2} md={2} lg={2}>
-            {/* <Col md={6}>
-              <AddNameAndDate title={"Customer Satisfaction"} />
-            </Col> */}
             <Col style={{ height: "260px" }} xs={12} md={6}>
               <DonutChart maleCount={10} femaleCount={6} />
             </Col>
@@ -284,13 +290,13 @@ export default function Ecommerce() {
               <CustomPieChart attempted={156} successfull={125} />
             </Col>
           </Row>
-        </Col>
+        </Col> */}
 
-        <Col xl={12}>
+        {/* <Col xl={12}>
           <Row xs={1} sm={1} md={1} lg={1}>
             <CustomBubbleChart />
           </Row>
-        </Col>
+        </Col> */}
 
         {/* <Col lg={6}></Col>
         <Col lg={6}>
