@@ -101,7 +101,7 @@ const Customer = () => {
             <Col xl={12}>
               {/* <DotsMenu dots={""} dropdown={dropdownItems} /> */}
 
-              <Box style={{ background: "#FFF5D580" }} className="mc-card">
+              <Box style={{ background: "#CFDEFF99" }} className="mc-card">
                 <Breadcrumb title={data?.pageTitle}>
                   {data?.breadcrumb?.map((item, index) => (
                     <Item key={index} className="mc-breadcrumb-item">

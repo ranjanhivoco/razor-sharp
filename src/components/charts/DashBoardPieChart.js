@@ -11,7 +11,7 @@ import {
 const COLORS = ["#62B170", "#E97D30"];
 const renderColorfulLegendText = (value, entry) => {
   return (
-    <span style={{ color: "#000", fontWeight: 400, fontSize: "12px" }}>
+    <span style={{ color: "#000", fontWeight: 400, fontSize: "18px",marginLeft:"" }}>
       {value}
     </span>
   );
@@ -37,12 +37,13 @@ const DashBoardPieChart = ({ attempted, successfull }) => {
     >
       <PieChart>
         <Legend
-          height={36}
+          // height={36}
+          
           iconType="circle"
-          layout="vertical"
+          layout="centric"
           verticalAlign="middle"
           align="right"
-          iconSize={8}
+          iconSize={12}
           formatter={renderColorfulLegendText}
           activeIndex
           activeShape
@@ -52,6 +53,7 @@ const DashBoardPieChart = ({ attempted, successfull }) => {
           contentStyle={{
             fontSize: "12px", // Decrease font size for a smaller tooltip
             padding: "5px", // Reduce padding for a smaller appearance
+            marginLeft:"10px"
           }}
           formatter={(value, name, props) => `${value}`}
         />
@@ -60,7 +62,7 @@ const DashBoardPieChart = ({ attempted, successfull }) => {
           data={data}
           labelLine={false}
           outerRadius={95}
-          cx={140}
+          cx={120}
           //   fill="#9A6ADB29"
           dataKey="value"
           //   label={renderCustomizedLabel}

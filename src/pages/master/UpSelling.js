@@ -172,7 +172,7 @@ const UpSelling = () => {
           <Row>
             <CustomDropDown/>
             <Col xl={12}>
-              <Box style={{ background: "#FFF5D580" }} className="mc-card">
+              <Box style={{ background: "#FFCCC199" }} className="mc-card">
                 <Breadcrumb title={data?.pageTitle}>
                   {data?.breadcrumb?.map((item, index) => (
                     <Item key={index} className="mc-breadcrumb-item">
@@ -204,7 +204,7 @@ const UpSelling = () => {
                       textAlign: "left",
                     }}
                     // number={usersCount}
-                    variant="purple"
+                    variant="green"
                     // percent="+ 95%"
                     compare="Upsell Attempts"
                   />{" "}
@@ -222,7 +222,8 @@ const UpSelling = () => {
                       textAlign: "left",
                     }}
                     // number={usersCount}
-                    variant="green"
+                    variant="purple"
+
                     // percent="+ 95%"
                     compare="upsell successful"
                   />{" "}

@@ -1,108 +1,108 @@
-  import { ThemeProvider } from "./context/Themes";
-  import { Suspense, lazy } from "react";
-  import { LoaderProvider } from "./context/Preloader";
-  import { BrowserRouter, Routes, Route } from "react-router-dom";
-  import {
-    Buttons,
-    Charts,
-    Tables,
-    Fields,
-    Headings,
-    Colors,
-  } from "./pages/blocks";
-  import Protected from "./Protected";
-  import AbundantUsers from "./pages/master/AbundantUsers";
-  import CustomerQuestion from "./pages/master/CustomerQuestion";
+import { ThemeProvider } from "./context/Themes";
+import { Suspense, lazy } from "react";
+import { LoaderProvider } from "./context/Preloader";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Buttons,
+  Charts,
+  Tables,
+  Fields,
+  Headings,
+  Colors,
+} from "./pages/blocks";
+import Protected from "./Protected";
+import AbundantUsers from "./pages/master/AbundantUsers";
+import CustomerQuestion from "./pages/master/CustomerQuestion";
 import Branch from "./pages/master/Branch";
 import Customer from "./pages/master/Customer";
 import UpSelling from "./pages/master/UpSelling.js";
 import { Chart } from "react-chartjs-2";
 import { ProviderDate } from "./components/context/date.js";
-  const Admin = lazy(() => import("./pages/master/Admin"));
-  const Ecommerce = lazy(() => import("./pages/master/Ecommerce"));
-  const ForgotPassword = lazy(() => import("./pages/master/ForgotPassword"));
-  const Register = lazy(() => import("./pages/master/Register"));
-  const Login = lazy(() => import("./pages/master/Login"));
-  const UserList = lazy(() => import("./pages/master/UserList"));
-  const UserProfile = lazy(() => import("./pages/master/UserProfile"));
-  const MyAccount = lazy(() => import("./pages/master/MyAccount"));
-  const InventoryList = lazy(() => import("./pages/master/InventoryList"));
-  const ProductView = lazy(() => import("./pages/master/ProductView"));
-  const ProductUpload = lazy(() => import("./pages/master/ProductUpload"));
-  const InvoiceList = lazy(() => import("./pages/master/InvoiceList"));
-  const InvoiceDetails = lazy(() => import("./pages/master/InvoiceDetails"));
-  const OrderList = lazy(() => import("./pages/master/OrderList"));
-  const Coupons = lazy(() => import("./pages/master/Coupons"));
-  const Message = lazy(() => import("./pages/master/Message"));
-  const Notification = lazy(() => import("./pages/master/Notification.jsx"));
-  const BlankPage = lazy(() => import("./pages/master/BlankPage"));
-  const OtpVerification = lazy(() => import("./pages/master/OtpVerification"));
-  const Settings = lazy(() => import("./pages/master/Settings"));
-  const ResetPassword = lazy(() => import("./pages/master/ResetPassword"));
-  const Dropshippers = lazy(() => import("./pages/master/Dropshippers"));
-  const Category = lazy(() => import("./pages/master/Category"));
-  const SubCategory = lazy(() => import("./pages/master/SubCategory"));
-  const SellerRequest = lazy(() => import("./pages/master/SellerRequest"));
-  const SellerView = lazy(() => import("./pages/master/SellerView"));
-  const Brand = lazy(() => import("./pages/master/Brand"));
-  const Attributes = lazy(() => import("./pages/master/Attributes"));
-  const BrandRequest = lazy(() => import("./pages/master/BrandRequest"));
-  const Faq = lazy(() => import("./pages/master/Faq"));
-  const FaqCategory = lazy(() => import("./pages/master/FaqCategory"));
-  const Newsletter = lazy(() => import("./pages/master/Newsletter"));
-  const Reports = lazy(() => import("./pages/master/Reports"));
-  const HomepageCards = lazy(() => import("./pages/master/HomepageCards"));
-  const ContactUs = lazy(() => import("./pages/master/ContactUs"));
-  const ContactView = lazy(() => import("./pages/master/ContactView"));
-  const Blogs = lazy(() => import("./pages/master/Blogs"));
-  const AddBlog = lazy(() => import("../src/components/elements/AddBlogPopup"));
-  const EditBlog = lazy(() => import("../src/components/elements/EditBlogPopup"));
-  const BulkOrderRequest = lazy(() => import("./pages/master/BulkOrderRequest"));
-  const BulkOrderView = lazy(() => import("./pages/master/BulkRequestView"));
-  const FeaturedProduct = lazy(() => import("./pages/master/FeaturedProducts"));
-  const ExclusiveProduct = lazy(() => import("./pages/master/ExclusiveProducts"));
-  const DealOfTheDay = lazy(() => import("./pages/master/DealOfTheDay"));
-  const TopRatedProduct = lazy(() => import("./pages/master/TopRatedProducts"));
-  const BestSeller = lazy(() => import("./pages/master/BestSeller"));
-  const FindinFast = lazy(() => import("./pages/master/FindinFastCategory"));
-  const RatingReview = lazy(() => import("./pages/master/RatingReview"));
-  const ReturnList = lazy(() => import("./pages/master/ReturnList"));
-  const ReturnView = lazy(() => import("./pages/master/ReturnView"));
-  const ForumPost = lazy(() => import("./pages/master/ForumPost"));
-  const ForumCategory = lazy(() => import("./pages/master/ForumCategory"));
-  const ForumSubcategory = lazy(() => import("./pages/master/ForumSubcategory"));
-  const AddForumPost = lazy(() =>
-    import("../src/components/elements/AddForumPostPopup")
-  );
-  const EditForumPost = lazy(() =>
-    import("../src/components/elements/EditForumPostPopup")
-  );
-  const CustomerQuestionView = lazy(() =>
-    import("./pages/master/CustomerQuestionView")
-  );
+import { BranchProvider } from "./components/context/branch.js";
+const Admin = lazy(() => import("./pages/master/Admin"));
+const Ecommerce = lazy(() => import("./pages/master/Ecommerce"));
+const ForgotPassword = lazy(() => import("./pages/master/ForgotPassword"));
+const Register = lazy(() => import("./pages/master/Register"));
+const Login = lazy(() => import("./pages/master/Login"));
+const UserList = lazy(() => import("./pages/master/UserList"));
+const UserProfile = lazy(() => import("./pages/master/UserProfile"));
+const MyAccount = lazy(() => import("./pages/master/MyAccount"));
+const InventoryList = lazy(() => import("./pages/master/InventoryList"));
+const ProductView = lazy(() => import("./pages/master/ProductView"));
+const ProductUpload = lazy(() => import("./pages/master/ProductUpload"));
+const InvoiceList = lazy(() => import("./pages/master/InvoiceList"));
+const InvoiceDetails = lazy(() => import("./pages/master/InvoiceDetails"));
+const OrderList = lazy(() => import("./pages/master/OrderList"));
+const Coupons = lazy(() => import("./pages/master/Coupons"));
+const Message = lazy(() => import("./pages/master/Message"));
+const Notification = lazy(() => import("./pages/master/Notification.jsx"));
+const BlankPage = lazy(() => import("./pages/master/BlankPage"));
+const OtpVerification = lazy(() => import("./pages/master/OtpVerification"));
+const Settings = lazy(() => import("./pages/master/Settings"));
+const ResetPassword = lazy(() => import("./pages/master/ResetPassword"));
+const Dropshippers = lazy(() => import("./pages/master/Dropshippers"));
+const Category = lazy(() => import("./pages/master/Category"));
+const SubCategory = lazy(() => import("./pages/master/SubCategory"));
+const SellerRequest = lazy(() => import("./pages/master/SellerRequest"));
+const SellerView = lazy(() => import("./pages/master/SellerView"));
+const Brand = lazy(() => import("./pages/master/Brand"));
+const Attributes = lazy(() => import("./pages/master/Attributes"));
+const BrandRequest = lazy(() => import("./pages/master/BrandRequest"));
+const Faq = lazy(() => import("./pages/master/Faq"));
+const FaqCategory = lazy(() => import("./pages/master/FaqCategory"));
+const Newsletter = lazy(() => import("./pages/master/Newsletter"));
+const Reports = lazy(() => import("./pages/master/Reports"));
+const HomepageCards = lazy(() => import("./pages/master/HomepageCards"));
+const ContactUs = lazy(() => import("./pages/master/ContactUs"));
+const ContactView = lazy(() => import("./pages/master/ContactView"));
+const Blogs = lazy(() => import("./pages/master/Blogs"));
+const AddBlog = lazy(() => import("../src/components/elements/AddBlogPopup"));
+const EditBlog = lazy(() => import("../src/components/elements/EditBlogPopup"));
+const BulkOrderRequest = lazy(() => import("./pages/master/BulkOrderRequest"));
+const BulkOrderView = lazy(() => import("./pages/master/BulkRequestView"));
+const FeaturedProduct = lazy(() => import("./pages/master/FeaturedProducts"));
+const ExclusiveProduct = lazy(() => import("./pages/master/ExclusiveProducts"));
+const DealOfTheDay = lazy(() => import("./pages/master/DealOfTheDay"));
+const TopRatedProduct = lazy(() => import("./pages/master/TopRatedProducts"));
+const BestSeller = lazy(() => import("./pages/master/BestSeller"));
+const FindinFast = lazy(() => import("./pages/master/FindinFastCategory"));
+const RatingReview = lazy(() => import("./pages/master/RatingReview"));
+const ReturnList = lazy(() => import("./pages/master/ReturnList"));
+const ReturnView = lazy(() => import("./pages/master/ReturnView"));
+const ForumPost = lazy(() => import("./pages/master/ForumPost"));
+const ForumCategory = lazy(() => import("./pages/master/ForumCategory"));
+const ForumSubcategory = lazy(() => import("./pages/master/ForumSubcategory"));
+const AddForumPost = lazy(() =>
+  import("../src/components/elements/AddForumPostPopup")
+);
+const EditForumPost = lazy(() =>
+  import("../src/components/elements/EditForumPostPopup")
+);
+const CustomerQuestionView = lazy(() =>
+  import("./pages/master/CustomerQuestionView")
+);
 
-  
-
-  export default function App() {
-    return (
-      <ThemeProvider>
-        <LoaderProvider>
+export default function App() {
+  return (
+    <ThemeProvider>
+      <LoaderProvider>
+        <BranchProvider>
           <ProviderDate>
-          <BrowserRouter>
-            <Routes>
-              {/* master Pages */}
-              {/* <Route
+            <BrowserRouter>
+              <Routes>
+                {/* master Pages */}
+                {/* <Route
                 path="/admin"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
                     {/* <Protected> */}
-              {/* <Admin /> */}
-              {/* </Protected> */}
-              {/* </Suspense> */}
-              {/* }
+                {/* <Admin /> */}
+                {/* </Protected> */}
+                {/* </Suspense> */}
+                {/* }
               /> */}
 
-              {/* <Route
+                {/* <Route
                 path="/rating-review"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -222,7 +222,7 @@ import { ProviderDate } from "./components/context/date.js";
                   
               /> */}
 
-              {/* <Route
+                {/* <Route
                 path="/invoice-details"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -232,7 +232,7 @@ import { ProviderDate } from "./components/context/date.js";
                   </Suspense>
                 }
               /> */}
-              {/* 
+                {/* 
               <Route
                 path="/my-account"
                 element={
@@ -244,7 +244,7 @@ import { ProviderDate } from "./components/context/date.js";
                 }
               /> */}
 
-              {/* <Route
+                {/* <Route
                 path="/contactView"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -255,17 +255,17 @@ import { ProviderDate } from "./components/context/date.js";
                 }
               /> */}
 
-              <Route
-                path="/order-list"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    {/* <Protected> */}
-                    <OrderList />
-                    {/* </Protected> */}
-                  </Suspense>
-                }
-              />
-              {/* <Route
+                <Route
+                  path="/order-list"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      {/* <Protected> */}
+                      <OrderList />
+                      {/* </Protected> */}
+                    </Suspense>
+                  }
+                />
+                {/* <Route
                 path="/return-replace"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -634,104 +634,104 @@ import { ProviderDate } from "./components/context/date.js";
                 }
               /> */}
 
-              {/* Blocks Pages */}
-              {/* <Route path="/headings" element={<Headings />} />
+                {/* Blocks Pages */}
+                {/* <Route path="/headings" element={<Headings />} />
               <Route path="/buttons" element={<Buttons />} /> */}
-              {/* <Route path="/avatars" element={<Avatars />} /> */}
-              {/* <Route path="/colors" element={<Colors />} />
+                {/* <Route path="/avatars" element={<Avatars />} /> */}
+                {/* <Route path="/colors" element={<Colors />} />
               <Route path="/charts" element={<Charts />} />
               <Route path="/tables" element={<Tables />} />
               <Route path="/fields" element={<Fields />} /> */}
-              {/* <Route path="/alerts" element={<Alerts />} /> */}
+                {/* <Route path="/alerts" element={<Alerts />} /> */}
 
-              <Route
-                path="/notification"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    {/* <Protected> */}
-                    <Notification />
-                    {/* </Protected> */}
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/notification"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      {/* <Protected> */}
+                      <Notification />
+                      {/* </Protected> */}
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/inventory-list"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <InventoryList />
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/inventory-list"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <InventoryList />
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Protected>
-                    <Ecommerce />
-                    </Protected>
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Protected>
+                        <Ecommerce />
+                      </Protected>
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/branch"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Protected>
-                    <Branch />
-                    </Protected>
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/branch"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Protected>
+                        <Branch />
+                      </Protected>
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/customer"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Protected>
-                    <Customer />
-                    </Protected>
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/customer"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Protected>
+                        <Customer />
+                      </Protected>
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/upselling-items"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Protected>
-                    <UpSelling />
-                    </Protected>
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/upselling-items"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Protected>
+                        <UpSelling />
+                      </Protected>
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/chart"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Protected>
-                    <Chart />
-                    </Protected>
-                  </Suspense>
-                }
-              />
+                <Route
+                  path="/chart"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Protected>
+                        <Chart />
+                      </Protected>
+                    </Suspense>
+                  }
+                />
 
-              <Route
-                path="/login"
-                element={
-                  <Suspense fallback={<LoaderProvider />}>
-                    <Login />
-                  </Suspense>
-                }
-              />
-
-            </Routes>
-          </BrowserRouter>
+                <Route
+                  path="/login"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Login />
+                    </Suspense>
+                  }
+                />
+              </Routes>
+            </BrowserRouter>
           </ProviderDate>
-        </LoaderProvider>
-      </ThemeProvider>
-    );
-  }
+        </BranchProvider>
+      </LoaderProvider>
+    </ThemeProvider>
+  );
+}

@@ -82,7 +82,7 @@ const Branch = () => {
           <Row>
             <CustomDropDown />
             <Col xs={12} sm={12} md={12} xl={12}>
-              <Box style={{ background: "#FFF5D580" }} className="mc-card">
+              <Box style={{ background: "#FFDFE7CC" }} className="mc-card">
                 <Breadcrumb title={data.pageTitle}>
                   {data?.breadcrumb?.map((item, index) => (
                     <Item key={index} className="mc-breadcrumb-item">

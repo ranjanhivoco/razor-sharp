@@ -1,40 +1,46 @@
 import { Col, Dropdown } from "react-bootstrap";
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { BranchContext } from "../context/branch";
 
 const CustomDropDown = () => {
-    const [branchData, setBranchData] = useState([]);
+  const { branchData, setBranchData } = useContext(BranchContext);
+  const endpoint = "https://api.hongs.razorsharp.in";
 
-    const endpoint = "https://api.hongs.razorsharp.in";
+  const getBranches = async () => {
+    const tokenString = sessionStorage.getItem("token");
+    const token = JSON.parse(tokenString);
+    try {
+      const response = await axios.get(`${endpoint}/common/get-branch`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Send token in Authorization header
+        },
+      });
+      setBranchData(response?.data);
+    } catch (error) {
+      console.error("Error fetching data:", error); // Handle errors
+    }
+  };
 
+  useEffect(() => {
+    getBranches();
+  }, []); // Empty array ensures the effect runs once after the initial render
 
-
-    
-    const getBranches = async () => {
-      const tokenString = sessionStorage.getItem("token");
-      const token = JSON.parse(tokenString);
-      try {
-        const response = await axios.get(`${endpoint}/common/get-branch`, {
-          headers: {
-            Authorization: `Bearer ${token}`, // Send token in Authorization header
-          },
-        });
-        setBranchData(response?.data)
-      } catch (error) {
-        console.error("Error fetching data:", error); // Handle errors
-      }
-    };
-  
-    useEffect(() => {
-      getBranches(); 
-    }, []); // Empty array ensures the effect runs once after the initial render
-  
   return (
     <>
-      <Col style={{marginBottom:"-10px"}}  xs={10} sm={10} md={10} xl={10}></Col>
       <Col
-        style={{ display: "flex", justifyContent: "end",marginBottom:"-20px" }}
+        style={{ marginBottom: "-10px" }}
+        xs={10}
+        sm={10}
+        md={10}
+        xl={10}
+      ></Col>
+      <Col
+        style={{
+          display: "flex",
+          justifyContent: "end",
+          marginBottom: "-20px",
+        }}
         xs={2}
         sm={2}
         md={2}
@@ -55,7 +61,7 @@ const CustomDropDown = () => {
           <Dropdown.Menu style={{}}>
             {branchData?.map((place, index) => {
               return (
-                <div style={{ padding: "0 8px" }}>
+                <div key={index} style={{ padding: "0 8px" }}>
                   <Dropdown.Item
                     style={{ fontSize: "12px", borderRadius: "4px" }}
                     className=""

@@ -2455,6 +2455,7 @@ textarea.form-control {
 }
     
 .mc-ecommerce-card.purple {
+  /* background: #FFDFE7 */
   background: -webkit-gradient(
     linear,
     right top,

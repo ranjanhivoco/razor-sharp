@@ -1,42 +1,34 @@
 import { values } from "lodash";
 import React, { PureComponent, useEffect, useState } from "react";
-import { PieChart, Pie, Legend,ResponsiveContainer,Tooltip } from "recharts";
-
-
+import { PieChart, Pie, Legend, ResponsiveContainer, Tooltip } from "recharts";
 
 const renderColorfulLegendText = (value, entry) => {
   return (
-    <span style={{ color: '#000', fontWeight: 400,fontSize:"18px"}}>
+    <span style={{ color: "#000", fontWeight: 400, fontSize: "18px" }}>
       {value}
     </span>
   );
 };
 
+const DashBoardDonut = ({ maleCount, femaleCount }) => {
+  const [data, setData] = useState([
+    { name: "Female", value: Number(femaleCount), fill: "#EE396A" },
+    { name: "Male", value: Number(maleCount), fill: "#4287FF" },
+  ]);
 
-
-const DashBoardDonut = ({maleCount,femaleCount}) => {
-
-  
-  const [data,setData] = useState( [
-    { name: "Female", value:Number(femaleCount), fill: "#EE396A" },
-    { name: "Male", value:Number(maleCount), fill: "#4287FF" },
-  ])
-
- useEffect(()=>{
-  setData([{...data[0],value:Number(femaleCount)},{...data[1],value:Number(maleCount)}])
-
- },[maleCount,femaleCount])
-
-
-
+  useEffect(() => {
+    setData([
+      { ...data[0], value: Number(femaleCount) },
+      { ...data[1], value: Number(maleCount) },
+    ]);
+  }, [maleCount, femaleCount]);
 
   return (
-    <ResponsiveContainer
-        width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <PieChart>
         {/* text */}
         <Legend
-        //   height={50}
+          //   height={50}
           iconType="circle"
           layout="vertical"
           verticalAlign="middle"
@@ -58,13 +50,11 @@ const DashBoardDonut = ({maleCount,femaleCount}) => {
           cx={140}
           // cy={90}
           outerRadius={100}
-
           innerRadius={80}
           fill="#8884d8"
           paddingAngle={0}
           dataKey="value"
-        >
-        </Pie>
+        ></Pie>
       </PieChart>
     </ResponsiveContainer>
   );

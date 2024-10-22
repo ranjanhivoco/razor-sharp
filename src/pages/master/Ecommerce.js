@@ -28,6 +28,8 @@ import AddNameAndDate from "../../components/elements/AddNameAndDate";
 import DashBoardDonut from "../../components/elements/DashBoardDonut";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import DashBoardPieChart from "../../components/charts/DashBoardPieChart";
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
@@ -38,6 +40,9 @@ export default function Ecommerce() {
   const [orderCount, setOrderCount] = useState(0);
   const [salesCount, setSalesCount] = useState(0);
   const [lastMonthSalesCount, setLastMonthSalesCount] = useState(0);
+  const [cardsInfo, setCardsInfo] = useState([]);
+  const [cardsInfo2, setCardsInfo2] = useState([]);
+
 
   const mockData = [
     { date: "01/10/24", message_count: 30 },
@@ -64,6 +69,54 @@ export default function Ecommerce() {
     { name: "Sector 17", location: "Chandigarh" },
     { name: "MG Road", location: "Gurugram, Haryana" },
   ];
+
+  const getCardsInfo = async () => {
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        "https://api.hongs.razorsharp.in/common/dashboard-card-info-1/2304",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setCardsInfo(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  
+  const getCardsInfo2 = async () => {
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        "  https://api.hongs.razorsharp.in/common/dashboard-card-info-2/2304",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setCardsInfo2(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
+
+  useEffect(() => {
+    getCardsInfo();
+    getCardsInfo2()
+  }, []);
 
   // useEffect(() => {
   //   getAllCouponsList();
@@ -163,11 +216,13 @@ export default function Ecommerce() {
                 // icons are not getting centered
                 icon="shopping_cart"
                 // icon="account_circle"
-                title="total orders"
+
+                
+                title="total conversations"
                 // number={usersCount}
-                number={913}
+                number={cardsInfo?.order?.current_month_total}
+                percent={Math.round(cardsInfo?.order?.percentage_change) + "%"}
                 variant="purple"
-                percent="+ 95%"
                 compare="last month"
               />
             </Col>
@@ -178,9 +233,9 @@ export default function Ecommerce() {
                 // icon="person_outline_outlined"
                 title="Total Customers"
                 // number={orderCount}
-                number={1273}
+                number={cardsInfo2?.customer?.current_month_total}
+                percent={Math.round(cardsInfo2?.customer?.percentage_change) + "%"}
                 variant="blue"
-                percent="- 35%"
                 compare="last month"
               />
             </Col>
@@ -190,9 +245,12 @@ export default function Ecommerce() {
                 icon="trending_up"
                 title="Upsell Attempts"
                 // number={selllerProductCount}
-                number={509}
+                number={cardsInfo?.upsell_attempted?.current_month_total}
+                percent={
+                  Math.round(cardsInfo?.upsell_attempted?.percentage_change) +
+                  "%"
+                }
                 variant="pink"
-                percent="- 25%"
                 compare="last month"
               />
             </Col>
@@ -200,11 +258,11 @@ export default function Ecommerce() {
             <Col>
               <EcommerceCard
                 icon="trending_flat"
-                title="Successful Upsell Attempts"
+                title="Successful Upsell"
                 // number={categoryCount}
-                number={305}
+                number={cardsInfo2?.upsell_successful?.current_month_total}
+                percent={Math.round(cardsInfo2?.upsell_successful?.percentage_change) + "%"}
                 variant="yellow"
-                percent="+ 95%"
                 compare="last month"
               />
             </Col>
@@ -214,9 +272,11 @@ export default function Ecommerce() {
                 icon="notifications_none"
                 title="Total Notifications"
                 // number={sellerCount}
-                number={56}
+                number={cardsInfo?.notification?.current_month_total}
+                percent={
+                  Math.round(cardsInfo?.notification?.percentage_change) + "%"
+                }
                 variant="blue"
-                percent="+ 95%"
                 compare="last month"
               />
             </Col>
@@ -228,7 +288,7 @@ export default function Ecommerce() {
                 // number={sellerCount}
                 number={1}
                 variant="purple"
-                percent="+ 95%"
+                percent="0%"
                 compare="last month"
               />
             </Col>
@@ -241,7 +301,7 @@ export default function Ecommerce() {
 
         <Col xl={12}>
           <Box
-            style={{ background: "#FFF5D5", borderRadius: "8px" }}
+            style={{ background: "#E5EEFF", borderRadius: "8px" }}
             className="mc-card"
           >
             <Row>
@@ -269,7 +329,7 @@ export default function Ecommerce() {
 
         <Col md={6} xl={6}>
           <Box
-            style={{ borderRadius: "8px", background: "#FFF5D5" }}
+            style={{ borderRadius: "8px", background: "#9A6ADB29" }}
             className="mc-card"
           >
             <AddNameAndDate hideDate={false} title={"Upsell Attempts"} />
