@@ -30,6 +30,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import DashBoardPieChart from "../../components/charts/DashBoardPieChart";
 import axios from "axios";
 import { useEffect } from "react";
+import { createContext } from "react";
+
 
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
@@ -43,6 +45,25 @@ export default function Ecommerce() {
   const [cardsInfo, setCardsInfo] = useState([]);
   const [cardsInfo2, setCardsInfo2] = useState([]);
 
+  const [satisficationDateRange, setSatisficationDateRange] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const [customerDateRange, setCustomerDateRange] = useState({
+    startDate: "10/01/2024",
+    endDate: "10/15/2024",
+  });
+
+  const [upSellAttemptsDateRange,setUpSellAttemptsDateRange]=useState(
+    {
+      startDate: null,
+      endDate: null,
+    }
+  )
+
+
+  const [customerGraphData,setCustomerGraphData]=useState()
 
   const mockData = [
     { date: "01/10/24", message_count: 30 },
@@ -89,8 +110,6 @@ export default function Ecommerce() {
     }
   };
 
-
-  
   const getCardsInfo2 = async () => {
     try {
       const tokenString = sessionStorage.getItem("token");
@@ -110,13 +129,62 @@ export default function Ecommerce() {
     }
   };
 
-
-
+  const getCustomerSatisfactionData = async () => {
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        `https://api.hongs.razorsharp.in/customer/dashboard/2304?start_date=${satisficationDateRange.startDate}&end_date=${satisficationDateRange.endDate}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     getCardsInfo();
     getCardsInfo2()
   }, []);
+
+  useEffect(() => {
+    if (satisficationDateRange.startDate && satisficationDateRange.endDate) {
+      getCustomerSatisfactionData();
+    }
+  }, [satisficationDateRange]);
+
+  const getCustomerGraphData = async () => {
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        `https://api.hongs.razorsharp.in/customer/dashboard/2304?start_date=${customerDateRange.startDate}&end_date=${customerDateRange.endDate}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setCustomerGraphData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (customerDateRange.startDate && customerDateRange.endDate) {
+      getCustomerGraphData();
+    }
+  }, [customerDateRange]);
+
+  console.log(customerDateRange);
+  
+
 
   // useEffect(() => {
   //   getAllCouponsList();
@@ -217,7 +285,6 @@ export default function Ecommerce() {
                 icon="shopping_cart"
                 // icon="account_circle"
 
-                
                 title="total conversations"
                 // number={usersCount}
                 number={cardsInfo?.order?.current_month_total}
@@ -234,7 +301,9 @@ export default function Ecommerce() {
                 title="Total Customers"
                 // number={orderCount}
                 number={cardsInfo2?.customer?.current_month_total}
-                percent={Math.round(cardsInfo2?.customer?.percentage_change) + "%"}
+                percent={
+                  Math.round(cardsInfo2?.customer?.percentage_change) + "%"
+                }
                 variant="blue"
                 compare="last month"
               />
@@ -261,7 +330,10 @@ export default function Ecommerce() {
                 title="Successful Upsell"
                 // number={categoryCount}
                 number={cardsInfo2?.upsell_successful?.current_month_total}
-                percent={Math.round(cardsInfo2?.upsell_successful?.percentage_change) + "%"}
+                percent={
+                  Math.round(cardsInfo2?.upsell_successful?.percentage_change) +
+                  "%"
+                }
                 variant="yellow"
                 compare="last month"
               />
@@ -306,7 +378,11 @@ export default function Ecommerce() {
           >
             <Row>
               <Col md={12}>
-                <AddNameAndDate title={"Customer Satisfaction"} />
+                <AddNameAndDate
+                  title={"Customer Satisfaction"}
+                  range={satisficationDateRange}
+                  setRange={setSatisficationDateRange}
+                />
               </Col>
               <Col md={12}>
                 <StackChart />
@@ -320,9 +396,19 @@ export default function Ecommerce() {
             style={{ borderRadius: "8px", background: "#FFF5D5" }}
             className="mc-card"
           >
-            <AddNameAndDate hideDate={false} title={"Customer"} />
+            <AddNameAndDate
+              hideDate={false}
+              title={"Customer"}
+              range={customerDateRange}
+              setRange={setCustomerDateRange}
+            />
+
             <Col style={{ height: "260px" }} xs={12} md={12}>
-              <DashBoardDonut maleCount={10} femaleCount={6} />
+              {console.log(customerGraphData)}
+              <DashBoardDonut
+                maleCount={customerGraphData?.male?.total_male_count}
+                femaleCount={customerGraphData?.female?.total_female_count}
+              />
             </Col>
           </Box>
         </Col>
@@ -332,7 +418,12 @@ export default function Ecommerce() {
             style={{ borderRadius: "8px", background: "#9A6ADB29" }}
             className="mc-card"
           >
-            <AddNameAndDate hideDate={false} title={"Upsell Attempts"} />
+            <AddNameAndDate
+              range={upSellAttemptsDateRange}
+              setRange={setUpSellAttemptsDateRange}
+              hideDate={false}
+              title={"Upsell Attempts"}
+            />
 
             <Col style={{ height: "260px" }} xs={12} md={12}>
               <DashBoardPieChart attempted={156} successfull={125} />

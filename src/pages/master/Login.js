@@ -27,7 +27,7 @@ export default function Login() {
     password: "",
   });
 
-  // console.log(login);
+  // (login);
 
 
   const Login = async (e) => {
@@ -40,7 +40,7 @@ export default function Login() {
       .post(`${url}/auth/login`, login)
       .then((response) => {
         const updatedResult = response.data;
-        // console.log(response.data)
+        // (response.data)
 
         //   {
         //     "auth_id": 1,
@@ -57,7 +57,7 @@ export default function Login() {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        (err);
       });
   };
 

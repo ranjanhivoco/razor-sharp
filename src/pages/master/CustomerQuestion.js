@@ -45,7 +45,7 @@ export default function CustomerQuestion({ icon, text }) {
         headers: authHeader(),
       })
       .then((response) => {
-        console.log(response?.data);
+        (response?.data);
         setQuestion(response?.data);
         setQueriesCount(response?.data?.length);
       });

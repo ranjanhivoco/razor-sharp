@@ -3,23 +3,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays } from "date-fns";
 import { ContextDate } from "../context/date";
+import { dateStringToMMDDYY } from "../helper/helper";
 
 
 const CustomDatePicker = () => {
 const { formatDate, setFormatDate  } = useContext(ContextDate);
 
   const [selectedDate, setSelectedDate] = useState(null);
+  
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    const formattedDate = date
-      ? date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        })
-      : null;
-
-      setFormatDate(formattedDate)
+    setFormatDate(dateStringToMMDDYY(date));
   };
 
 

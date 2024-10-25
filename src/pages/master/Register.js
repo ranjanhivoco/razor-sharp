@@ -56,13 +56,13 @@ export default function Register() {
   const handleCaptchaChange = async (e, value) => {
     const token = captchaRef.current.getValue();
     // captchaRef.current.reset();
-    console.log("token:", token);
+    ("token:", token);
 
     // await axios
     //   .post("https://localhost:3000", { token })
-    //   .then((res) => console.log(res))
+    //   .then((res) => (res))
     //   .catch((error) => {
-    //     console.log(error);
+    //     (error);
     //   });
   };
   const captchaRef = useRef(null);

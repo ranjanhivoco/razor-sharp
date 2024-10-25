@@ -23,7 +23,7 @@ import { ContextDate } from "../../components/context/date";
 const Customer = () => {
 
   const { formatDate, setFormatDate  } = useContext(ContextDate);
-  console.log("object", formatDate)
+  ("object", formatDate)
   const [customerData, setCustomerData] = useState();
   const endpoint = "https://api.hongs.razorsharp.in";
   const getCustomerData = async () => {
@@ -72,19 +72,19 @@ const Customer = () => {
       href: "/profile",
       icon: "👤", // This could be an icon component
       text: "Profile",
-      onClick: () => console.log("Profile clicked"),
+      onClick: () => ("Profile clicked"),
     },
     {
       href: "/settings",
       icon: "⚙️",
       text: "Settings",
-      onClick: () => console.log("Settings clicked"),
+      onClick: () => ("Settings clicked"),
     },
     {
       href: "/log",
       text: "Log Out",
       icon: "🚪",
-      onClick: () => console.log("Log Out clicked"),
+      onClick: () => ("Log Out clicked"),
     },
   ];
 

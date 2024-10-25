@@ -1,35 +1,24 @@
-import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays } from "date-fns";
-import { EventOutlined } from "@mui/icons-material";
+import { dateStringToMMDDYY } from "../helper/helper";
 
-const DateRangePicker = () => {
-  
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-
-  // Calculate the maximum selectable date (day before today)
+const DateRangePicker = ({ range, setRange }) => {
+  // console.log(range,"range"); 
   const maxSelectableDate = subDays(new Date(), 1);
-
-  console.log(startDate, endDate);
-
   return (
     <div
       style={{
         display: "flex",
         gap: "4px",
         justifyContent: "space-evenly",
-        alignItems:"center",
-        // marginRight: 0,
-        // marginLeft: "auto",
+        alignItems: "center",
       }}
     >
       <div
         style={{
           border: "1px solid #cbd5e1",
           borderRadius: "4px",
-          // width: "150px",
           background: "#fff",
         }}
       >
@@ -37,22 +26,26 @@ const DateRangePicker = () => {
           className="custom-datepicker"
           isClearable
           showIcon
-          selected={startDate}
+          selected={range?.startDate}
           onChange={(date) => {
-            setStartDate(date);
-            setEndDate(null); // Reset end date when start date changes
+            setRange((prevRange) => ({
+              ...prevRange,
+              startDate:dateStringToMMDDYY(date),
+            }));
           }}
           selectsStart
-          startDate={startDate}
-          endDate={endDate}
+          startDate={range?.startDate}
+          endDate={range?.endDate}
           maxDate={maxSelectableDate}
           placeholderText="Select Start Date"
-          inputProps={{ style: { color: "#000" } }} // Placeholder color
+          inputProps={{ style: { color: "#000" } }}
+          dateFormat="dd/MM/yyyy"
+
         />
       </div>
 
-      <span style={{color: "#141414"}}>to</span>
-      
+      <span style={{ color: "#141414" }}>to</span>
+
       <div
         style={{
           border: "1px solid #cbd5e1",
@@ -65,15 +58,20 @@ const DateRangePicker = () => {
           className="custom-datepicker"
           isClearable
           showIcon
-          // style={{ width: "200px" }}
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
+          selected={range?.endDate}
+          onChange={(date) =>
+            setRange((prevRange) => ({
+              ...prevRange,
+              endDate: dateStringToMMDDYY(date),
+            }))
+          }
           selectsEnd
-          // startDate={startDate}
-          endDate={endDate}
-          minDate={startDate} // Ensure end date is after start date
+          endDate={range?.endDate}
+          minDate={range?.startDate}
           maxDate={maxSelectableDate}
           placeholderText="Select End Date"
+          dateFormat="dd/MM/yyyy"
+
         />
       </div>
     </div>

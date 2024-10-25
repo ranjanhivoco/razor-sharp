@@ -123,7 +123,7 @@ export default function UserProfile(props) {
     );
   });
 
-  console.log(displayUsers);
+  (displayUsers);
 
   return (
     <>

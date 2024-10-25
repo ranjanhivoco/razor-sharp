@@ -42,7 +42,7 @@ export default function Popup(props) {
   const [message, setMessage] = useState("");
 
   let categoryName = selected[0]?.slug;
-  console.log(categoryName, "sele");
+  (categoryName, "sele");
 
   useEffect(() => {
     if (categoryName) {
@@ -111,7 +111,7 @@ export default function Popup(props) {
       slug: item?.slug,
     }));
     setCategoryList(categoryName);
-    console.log(result?.data);
+    (result?.data);
   };
 
   const getAllProduct = async () => {
@@ -123,7 +123,7 @@ export default function Popup(props) {
       id: item?._id,
     }));
     setProductList(productName);
-    console.log(result?.data);
+    (result?.data);
   };
 
   return (

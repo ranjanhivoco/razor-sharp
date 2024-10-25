@@ -46,7 +46,7 @@ export default function UserProfile(props) {
       }
     );
     setReviewData(result?.data?.result);
-    console.log(result?.data?.result);
+    (result?.data?.result);
     setLoading(false);
   };
 

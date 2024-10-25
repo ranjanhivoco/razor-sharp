@@ -142,7 +142,7 @@ export default function InventoryList() {
     });
 
   const pageCount = Math.ceil(exclusiveCount?.totalCount / itemsPerPage);
-  console.log(pageCount);
+  (pageCount);
   const handlePageClick = async (selected) => {
     const selectedPage = parseInt(selected.selected, 10);
     const newOffset =

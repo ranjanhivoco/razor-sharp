@@ -40,7 +40,7 @@ export default function ProductView() {
       const result = await hostedSellerAuthAxios.get(
         `/seller/${query.get("query_id")}`
       );
-      console.log("Fetched Seller Data:", result.data.data); // Debug: Log fetched data
+      ("Fetched Seller Data:", result.data.data); // Debug: Log fetched data
       setSellerData(result?.data?.data);
     } catch (error) {
       console.error("Error fetching seller data:", error); // Debug: Log any errors

@@ -40,7 +40,7 @@ export default function ReturnList() {
       .get(`/getreturnandreplaceorder`, { headers: authHeader() })
       .then((response) => {
         setReturnOrderList(response.data);
-        // console.log(response.data)
+        // (response.data)
       });
   };
 

@@ -1,15 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import { List, Item, Anchor, Button } from "../elements";
 
 export default function MenuItem({ item }) {
-  console.log(item.submenu, "item");
+  const [active, setActive] = useState(item.href === window.location.pathname);
 
-  const [active, setActive] = React.useState(false);
   return (
-    <Item
-      className={`mc-sidebar-menu-item ${active ? "active" : ""}`}
-      onClick={() => setActive(!active)}
-    >
+    <Item className={`mc-sidebar-menu-item ${active ? "active" : ""}`}>
       {item.submenu ? (
         <>
           <Button

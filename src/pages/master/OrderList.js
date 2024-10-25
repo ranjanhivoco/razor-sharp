@@ -368,7 +368,7 @@ export default function UserList() {
   const itemsPerPage = 10;
   const endOffset = itemOffset + itemsPerPage;
 
-  console.log(orderList);
+  (orderList);
   
 
   const displayUsers = orderList

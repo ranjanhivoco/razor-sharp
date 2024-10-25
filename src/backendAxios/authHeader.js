@@ -3,6 +3,6 @@ export default function authHeader() {
   if (token) {
     return { Authorization: `Bearer ${token}` };
   } else {
-    console.log("not found");
+    ("not found");
   }
 }

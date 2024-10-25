@@ -57,7 +57,7 @@ export default function CardPopup(props) {
     setCategoryList(categoryName);
   };
 
-  // console.log(categoryList?.slug)
+  // (categoryList?.slug)
 
   const handleImage = (e) => {
     const file = e.target.files[0];

@@ -4202,10 +4202,12 @@ textarea.form-control {
   margin-bottom: 3px;
 }
 .mc-sidebar-menu-item.focused .mc-sidebar-menu-btn {
+
   color: var(--activeColor);
   background-color: var(--activeBG);
 }
 .mc-sidebar-menu-item.active .mc-sidebar-menu-btn {
+
   color: #fff;
   background-color: #000;
 }

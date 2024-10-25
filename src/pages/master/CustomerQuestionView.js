@@ -38,7 +38,7 @@ export default function UserProfile(props) {
     setLoading(false);
   };
 
-  console.log(queryMessage);
+  (queryMessage);
 
   return (
     <>

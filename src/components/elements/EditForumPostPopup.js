@@ -209,7 +209,7 @@ export default function CardPopup(props) {
 
       navigate("/forum-post");
     } catch (error) {
-      console.log(error);
+      (error);
       // Log the full error for debugging
       console.error("Error updating post:", error);
 

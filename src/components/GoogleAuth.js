@@ -11,12 +11,12 @@ const GoogleAuth = () => {
         logo_alignment="center"
         shape="circle"
         onSuccess={(credentialResponse) => {
-          // console.log(credentialResponse.credential);
+          // (credentialResponse.credential);
           var decoded = jwt_decode(credentialResponse.credential);
-          console.log(decoded);
+          (decoded);
         }}
         onError={() => {
-          console.log("Login Failed");
+          ("Login Failed");
         }}
       />
     </div>
