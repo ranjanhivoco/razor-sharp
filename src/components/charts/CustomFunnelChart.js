@@ -91,9 +91,7 @@ const CustomFunnelChart = () => {
         // height: "334px",
       }}
     >
-      <FunnelChart
-       width={364} height={400}
-      >
+      <FunnelChart width={364} height={400}>
         <Legend
           style={{ alignSelf: "flex-start" }}
           iconType="circle"
@@ -106,8 +104,6 @@ const CustomFunnelChart = () => {
             id: item.name,
             color: item.fill,
           }))}
-
-
           // formatter={(value, entry) => (
           //   <span style={{ color: "#000", fontWeight: 400, fontSize: "14px" }}>
           //     {`${value}: ${entry.payload.value}`}

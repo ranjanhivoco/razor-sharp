@@ -42,7 +42,7 @@ const DashBoardPieChart = () =>
     const data = [
       { name: "All 3 Steps", value: 8 },
       { name: "Partial Steps", value: 12 },
-      { name: "None", value: 4 },
+      // { name: "None", value: 0 },
     ];
 
     const totalValue = data.reduce((acc, entry) => acc + entry.value, 0);
