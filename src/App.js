@@ -727,6 +727,15 @@ export default function App() {
                     </Suspense>
                   }
                 />
+
+                <Route
+                  path="/message"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      <Message />
+                    </Suspense>
+                  }
+                />
               </Routes>
             </BrowserRouter>
           </ProviderDate>

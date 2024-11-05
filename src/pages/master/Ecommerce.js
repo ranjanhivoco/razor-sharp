@@ -31,7 +31,9 @@ import DashBoardPieChart from "../../components/charts/DashBoardPieChart";
 import axios from "axios";
 import { useEffect } from "react";
 import { createContext } from "react";
-
+import Chat from "../../components/elements/Chat";
+import Message from "./Message";
+import CustomFunnelChart from "../../components/charts/CustomFunnelChart";
 
 export default function Ecommerce() {
   const [couponCount, setCouponCount] = useState(0);
@@ -46,24 +48,21 @@ export default function Ecommerce() {
   const [cardsInfo2, setCardsInfo2] = useState([]);
 
   const [satisficationDateRange, setSatisficationDateRange] = useState({
-    startDate: null,
-    endDate: null,
+    startDate: "10/01/2024",
+    endDate: "10/08/2024",
   });
 
   const [customerDateRange, setCustomerDateRange] = useState({
     startDate: "10/01/2024",
-    endDate: "10/15/2024",
+    endDate: "10/08/2024",
   });
 
-  const [upSellAttemptsDateRange,setUpSellAttemptsDateRange]=useState(
-    {
-      startDate: null,
-      endDate: null,
-    }
-  )
+  const [upSellAttemptsDateRange, setUpSellAttemptsDateRange] = useState({
+    startDate: "10/01/2024",
+    endDate: "10/08/2024",
+  });
 
-
-  const [customerGraphData,setCustomerGraphData]=useState()
+  const [customerGraphData, setCustomerGraphData] = useState();
 
   const mockData = [
     { date: "01/10/24", message_count: 30 },
@@ -149,7 +148,7 @@ export default function Ecommerce() {
 
   useEffect(() => {
     getCardsInfo();
-    getCardsInfo2()
+    getCardsInfo2();
   }, []);
 
   useEffect(() => {
@@ -183,8 +182,6 @@ export default function Ecommerce() {
   }, [customerDateRange]);
 
   console.log(customerDateRange);
-  
-
 
   // useEffect(() => {
   //   getAllCouponsList();
@@ -371,9 +368,9 @@ export default function Ecommerce() {
           <WordCloudComponent />
         </Col>
 
-        <Col xl={12}>
+        <Col style={{height:"100%"}} xl={12}>
           <Box
-            style={{ background: "#E5EEFF", borderRadius: "8px" }}
+            style={{ background: "#E5EEFF", borderRadius: "8px",height:"fitContent" }}
             className="mc-card"
           >
             <Row>
@@ -391,9 +388,35 @@ export default function Ecommerce() {
           </Box>
         </Col>
 
-        <Col md={6} xl={6}>
+        <Col style={{marginBottom:"10px"}} md={6}>
           <Box
-            style={{ borderRadius: "8px", background: "#FFF5D5" }}
+            style={{
+              borderRadius: "8px",
+              background: "#9A6ADB33",
+              height: "100%",
+            }}
+            className="mc-card"
+          >
+            <AddNameAndDate
+              hideDate={false}
+              title={"Upsell Attempts"}
+              range={upSellAttemptsDateRange}
+              setRange={setUpSellAttemptsDateRange}
+            />
+
+            <Col style={{ height: "", marginTop: "60px" }} xs={12} md={12}>
+              <CustomFunnelChart />
+            </Col>
+          </Box>
+        </Col>
+
+        <Col style={{marginBottom:"10px"}} md={6} xl={6}>
+          <Box
+            style={{
+              borderRadius: "8px",
+              background: "#FFF5D5",
+              height: "48%",
+            }}
             className="mc-card"
           >
             <AddNameAndDate
@@ -403,7 +426,7 @@ export default function Ecommerce() {
               setRange={setCustomerDateRange}
             />
 
-            <Col style={{ height: "260px" }} xs={12} md={12}>
+            <Col style={{ height: "200px" }} xs={12} md={12}>
               {console.log(customerGraphData)}
               <DashBoardDonut
                 maleCount={customerGraphData?.male?.total_male_count}
@@ -411,9 +434,31 @@ export default function Ecommerce() {
               />
             </Col>
           </Box>
+
+          <Box
+            style={{
+              borderRadius: "8px",
+              background: "#9A6ADB29",
+              height: "48%",
+            }}
+            className="mc-card"
+          >
+            <AddNameAndDate
+              range={upSellAttemptsDateRange}
+              setRange={setUpSellAttemptsDateRange}
+              hideDate={false}
+              title={"3-Step Summary"}
+            />
+
+            <Col style={{ height: "200px" }} xs={12} md={12}>
+              <DashBoardPieChart
+              // attempted={156} successfull={125}
+              />
+            </Col>
+          </Box>
         </Col>
 
-        <Col md={6} xl={6}>
+        {/* <Col md={6} xl={6}>
           <Box
             style={{ borderRadius: "8px", background: "#9A6ADB29" }}
             className="mc-card"
@@ -429,7 +474,7 @@ export default function Ecommerce() {
               <DashBoardPieChart attempted={156} successfull={125} />
             </Col>
           </Box>
-        </Col>
+        </Col> */}
 
         {/* <Col xl={12}>
           <Row xs={1} sm={2} md={2} lg={2}>
@@ -453,6 +498,9 @@ export default function Ecommerce() {
         <Col lg={6}>
           <DateRangePicker />
         </Col> */}
+
+        {/* <Chat /> */}
+        {/* <Message/> */}
       </Row>
     </PageLayout>
   );

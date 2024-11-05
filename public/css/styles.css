@@ -7155,3 +7155,8 @@ p.card-text {
   color: black;
   opacity: 1;
 }
+
+.sent-message .cs-message__html-content{
+  background-color: black;
+  border-radius: 8px;
+}

@@ -11,14 +11,15 @@ import {
 
 const StackChart = () => {
   const data = [
-    { name: "24/10/24", No: 30, Yes: 70 },
-    { name: "24/10/24", No: 12, Yes: 88 },
-    { name: "24/10/24", No: 15, Yes: 85 },
-    { name: "24/10/24", No: 35, Yes: 65 },
-    { name: "24/10/24", No: 54, Yes: 46 },
-    { name: "24/10/24", No: 72, Yes: 28 },
-    { name: "24/10/24", No: 32, Yes: 68 },
-  ];
+    { name: "01/10/24", No: 30, Yes: 70 },
+    { name: "02/10/24", No: 45, Yes: 55 },
+    { name: "03/10/24", No: 25, Yes: 75 },
+    { name: "04/10/24", No: 40, Yes: 60 },
+    { name: "05/10/24", No: 60, Yes: 40 },
+    { name: "06/10/24", No: 55, Yes: 45 },
+    { name: "07/10/24", No: 35, Yes: 65 },
+    { name: "08/10/24", No: 20, Yes: 80 },
+];
 
   return (
     <ResponsiveContainer
