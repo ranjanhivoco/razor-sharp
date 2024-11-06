@@ -10,24 +10,28 @@ import {
 } from "recharts";
 
 const StackChart = () => {
-  //   const data = [
-  //     { name: "01/10/24", No: 30, Yes: 70 },
-  //     { name: "02/10/24", No: 45, Yes: 55 },
-  //     { name: "03/10/24", No: 25, Yes: 75 },
-  //     { name: "04/10/24", No: 40, Yes: 60 },
-  //     { name: "05/10/24", No: 60, Yes: 40 },
-  //     { name: "06/10/24", No: 55, Yes: 45 },
-  //     { name: "07/10/24", No: 35, Yes: 65 },
-  //     { name: "08/10/24", No: 20, Yes: 80 },
-  // ];
+    const data = [
+      { date: "01/10/24", No: 30, Yes: 70 },
+      { date: "02/10/24", No: 45, Yes: 55 },
+      { date: "03/10/24", No: 25, Yes: 75 },
+      { date: "04/10/24", No: 40, Yes: 60 },
+      { date: "05/10/24", No: 60, Yes: 40 },
+      { date: "06/10/24", No: 55, Yes: 45 },
+      { date: "07/10/24", No: 35, Yes: 65 },
+      { date: "08/10/24", No: 20, Yes: 80 },
+    ];
 
-  const data = [
-    { date: "30-10-24", Yes: 80, No: 40 },
-    { date: "31-10-24", Yes: 50, No: 60 },
-    { date: "01-11-24", Yes: 70, No: 50 },
-    { date: "02-11-24", Yes: 60, No: 20 },
-    { date: "03-11-24", Yes: 30, No: 80 },
-  ];
+  // const data = [
+  //   { date: "30-10-24", Yes: 50, No: 30 },
+  //   { date: "31-10-24", Yes: 80, No: 50 },
+  //   { date: "01-11-24", Yes: 75, No: 40 },
+  //   { date: "02-11-24", Yes: 80, No: 20 },
+  //   { date: "03-11-24", Yes: 90, No: 50 },
+  //   { date: "04-11-24", Yes: 50, No: 30 },
+  //   { date: "05-11-24", Yes: 30, No: 20 },
+
+
+  // ];
 
   return (
     // <ResponsiveContainer
@@ -66,14 +70,14 @@ const StackChart = () => {
         <XAxis
           dataKey="date"
           label={{
-            fontSize:14,
+            fontSize: 14,
             icon: "circle",
             value: "X-axis - Date",
             position: "insideBottomCenter",
-            angle:0,
+            angle: 0,
             offset: -20,
             dy: 30,
-            dx:300,
+            dx: 300,
 
             fill: "black",
           }}
@@ -81,12 +85,12 @@ const StackChart = () => {
 
         <YAxis
           label={{
-            fontSize:14,
+            fontSize: 14,
             value: "Y-axis - Customer count",
             position: "insideTop",
-            angle:0,
+            angle: 0,
             dy: -8,
-            dx:200,
+            dx: 200,
             fill: "black",
           }}
         />
