@@ -284,7 +284,7 @@ export default function Ecommerce() {
 
                 title="total conversations"
                 // number={usersCount}
-                number={cardsInfo?.order?.current_month_total}
+                number={cardsInfo?.order?.current_month_total||0}
                 percent={Math.round(cardsInfo?.order?.percentage_change) + "%"}
                 variant="purple"
                 compare="last month"
@@ -297,7 +297,7 @@ export default function Ecommerce() {
                 // icon="person_outline_outlined"
                 title="Total Customers"
                 // number={orderCount}
-                number={cardsInfo2?.customer?.current_month_total}
+                number={cardsInfo2?.customer?.current_month_total || 0}
                 percent={
                   Math.round(cardsInfo2?.customer?.percentage_change) + "%"
                 }
@@ -311,7 +311,7 @@ export default function Ecommerce() {
                 icon="trending_up"
                 title="Upsell Attempts"
                 // number={selllerProductCount}
-                number={cardsInfo?.upsell_attempted?.current_month_total}
+                number={cardsInfo?.upsell_attempted?.current_month_total || 0}
                 percent={
                   Math.round(cardsInfo?.upsell_attempted?.percentage_change) +
                   "%"
@@ -326,7 +326,7 @@ export default function Ecommerce() {
                 icon="trending_flat"
                 title="Successful Upsell"
                 // number={categoryCount}
-                number={cardsInfo2?.upsell_successful?.current_month_total}
+                number={cardsInfo2?.upsell_successful?.current_month_total || 0} 
                 percent={
                   Math.round(cardsInfo2?.upsell_successful?.percentage_change) +
                   "%"
