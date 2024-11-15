@@ -1,28 +1,18 @@
-import React, { createContext, useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { subDays } from "date-fns";
-import { ContextDate } from "../context/date";
 import { dateStringToMMDDYY } from "../helper/helper";
+import { useState } from "react";
 
-
-const CustomDatePicker = () => {
-const { formatDate, setFormatDate  } = useContext(ContextDate);
-
+const CustomDatePicker = ({  setFormattedDate }) => {
   const [selectedDate, setSelectedDate] = useState(null);
-  
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setFormatDate(dateStringToMMDDYY(date));
+    setFormattedDate(dateStringToMMDDYY(date));
   };
 
-
-  
-
-
-  // Calculate the maximum selectable date (day before today)
   const maxSelectableDate = subDays(new Date(), 1);
-
 
   return (
     <div

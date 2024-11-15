@@ -19,6 +19,7 @@ import UpSelling from "./pages/master/UpSelling.js";
 import { Chart } from "react-chartjs-2";
 import { ProviderDate } from "./components/context/date.js";
 import { BranchProvider } from "./components/context/branch.js";
+import ThreeStepProcess from "./pages/master/ThreeStepProcess.js";
 const Admin = lazy(() => import("./pages/master/Admin"));
 const Ecommerce = lazy(() => import("./pages/master/Ecommerce"));
 const ForgotPassword = lazy(() => import("./pages/master/ForgotPassword"));
@@ -101,7 +102,6 @@ export default function App() {
                 {/* </Suspense> */}
                 {/* }
               /> */}
-
                 {/* <Route
                 path="/rating-review"
                 element={
@@ -221,7 +221,6 @@ export default function App() {
                 }
                   
               /> */}
-
                 {/* <Route
                 path="/invoice-details"
                 element={
@@ -243,7 +242,6 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-
                 {/* <Route
                 path="/contactView"
                 element={
@@ -254,7 +252,6 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-
                 <Route
                   path="/order-list"
                   element={
@@ -633,7 +630,6 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-
                 {/* Blocks Pages */}
                 {/* <Route path="/headings" element={<Headings />} />
               <Route path="/buttons" element={<Buttons />} /> */}
@@ -643,7 +639,6 @@ export default function App() {
               <Route path="/tables" element={<Tables />} />
               <Route path="/fields" element={<Fields />} /> */}
                 {/* <Route path="/alerts" element={<Alerts />} /> */}
-
                 <Route
                   path="/notification"
                   element={
@@ -654,7 +649,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/inventory-list"
                   element={
@@ -663,7 +657,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/"
                   element={
@@ -674,7 +667,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/branch"
                   element={
@@ -685,7 +677,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/customer"
                   element={
@@ -696,7 +687,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/upselling-items"
                   element={
@@ -707,7 +697,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/chart"
                   element={
@@ -718,7 +707,6 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/login"
                   element={
@@ -727,12 +715,20 @@ export default function App() {
                     </Suspense>
                   }
                 />
-
                 <Route
                   path="/message"
                   element={
                     <Suspense fallback={<LoaderProvider />}>
                       <Message />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/3-step-process"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      {/* <Message /> */}
+                      <ThreeStepProcess />
                     </Suspense>
                   }
                 />

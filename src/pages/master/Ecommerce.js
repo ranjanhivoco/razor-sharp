@@ -181,7 +181,7 @@ export default function Ecommerce() {
     }
   }, [customerDateRange]);
 
-  console.log(customerDateRange);
+  // console.log(customerDateRange);
 
   // useEffect(() => {
   //   getAllCouponsList();
@@ -427,7 +427,6 @@ export default function Ecommerce() {
             />
 
             <Col style={{ height: "200px" }} xs={12} md={12}>
-              {console.log(customerGraphData)}
               <DashBoardDonut
                 maleCount={customerGraphData?.male?.total_male_count}
                 femaleCount={customerGraphData?.female?.total_female_count}

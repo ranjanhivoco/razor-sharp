@@ -7,31 +7,46 @@ import { Breadcrumb, DotsMenu, DropdownMenu } from "../../components";
 import { Anchor, Item, Text } from "../../components/elements";
 import data from "../../data/master/customer.json";
 import { EcommerceCard, FloatCard } from "../../components/cards";
-import { AnalyticsChart, DevicesChart, RevenueChart, SalesChart } from "../../components/charts";
+import {
+  AnalyticsChart,
+  DevicesChart,
+  RevenueChart,
+  SalesChart,
+} from "../../components/charts";
 import Analytics from "./Analytics";
 import ReactPaginate from "react-paginate";
-import { Table, Tbody, Td, Th, Thead, Tr } from "../../components/elements/Table";
+import {
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "../../components/elements/Table";
 import DonutChart from "../../components/charts/DonutChart";
 import { BarChart } from "recharts";
 import CustomBarChart from "../../components/charts/CustomBarChart";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import CustomDatePicker from "../../components/elements/CustomDatePicker";
-import { ContextDate } from "../../components/context/date";
 
 const Customer = () => {
+  const [formattedDate, setFormattedDate] = useState("");
 
-  const { formatDate, setFormatDate  } = useContext(ContextDate);
-  ("object", formatDate)
   const [customerData, setCustomerData] = useState();
+  const [pageNumber, setPageNumber] = useState(1);
+  const itemsPerPage = 10;
+
   const endpoint = "https://api.hongs.razorsharp.in";
-  const getCustomerData = async () => {
+  const getCustomerData = async (page) => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/customer/get/2304`,
+        `${endpoint}/customer/get/2304?page=${page}&filter_date=${
+          formattedDate || ""
+        }`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -45,19 +60,20 @@ const Customer = () => {
   };
 
   useEffect(() => {
-    getCustomerData(); 
-  }, [formatDate]); // Empty array ensures the effect runs once after the initial render
+    getCustomerData(pageNumber);
+  }, [formattedDate, pageNumber]);
 
-  
- 
-    
+  const handlePageClick = ({ selected }) => {
+    // getCustomerData(selected + 1);
+    setPageNumber(selected + 1);
+  };
 
   const displayData = customerData?.result?.map((item, index) => {
     return (
       <Tr key={index}>
         <Td title={index + 1}>
           <Box className="mc-table-check">
-            <Text>{index + 1}</Text>
+            <Text>{(pageNumber - 1) * 10 + index + 1}</Text>
           </Box>
         </Td>
         <td>{item.male_count}</td>
@@ -67,29 +83,30 @@ const Customer = () => {
     );
   });
 
-  const dropdownItems = [
-    {
-      href: "/profile",
-      icon: "👤", // This could be an icon component
-      text: "Profile",
-      onClick: () => ("Profile clicked"),
-    },
-    {
-      href: "/settings",
-      icon: "⚙️",
-      text: "Settings",
-      onClick: () => ("Settings clicked"),
-    },
-    {
-      href: "/log",
-      text: "Log Out",
-      icon: "🚪",
-      onClick: () => ("Log Out clicked"),
-    },
-  ];
-
+  // const dropdownItems = [
+  //   {
+  //     href: "/profile",
+  //     icon: "👤", // This could be an icon component
+  //     text: "Profile",
+  //     onClick: () => ("Profile clicked"),
+  //   },
+  //   {
+  //     href: "/settings",
+  //     icon: "⚙️",
+  //     text: "Settings",
+  //     onClick: () => ("Settings clicked"),
+  //   },
+  //   {
+  //     href: "/log",
+  //     text: "Log Out",
+  //     icon: "🚪",
+  //     onClick: () => ("Log Out clicked"),
+  //   },
+  // ];
 
   const loading = false;
+  const pageCount = Math.ceil(customerData?.totalRows / itemsPerPage);
+
   return (
     <PageLayout>
       <div>
@@ -164,15 +181,11 @@ const Customer = () => {
                   />
                 </Col>
 
+                <Col md={8}></Col>
 
-
-                <Col md={8}>
+                <Col md={4}>
+                  <CustomDatePicker setFormattedDate={setFormattedDate} />
                 </Col>
-
-                <Col md={4} >
-                  <CustomDatePicker />
-                </Col>
-
 
                 <Col xs={12} sm={12} xl={12}>
                   <div class="col-xl-12" id="category-data">
@@ -198,8 +211,8 @@ const Customer = () => {
                   <ReactPaginate
                     previousLabel={"⟵"}
                     nextLabel={"⟶"}
-                    // pageCount={pageCount}
-                    // onPageChange={changePage}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
                     containerClassName={"paginationBttns"}
                     previousClassName={"pre"}
                     nextClassName={"next"}
@@ -207,8 +220,6 @@ const Customer = () => {
                     activeClassName={"paginationActive"}
                   />
                 </Col>
-
-                
               </Row>
             </Col>
           </Row>

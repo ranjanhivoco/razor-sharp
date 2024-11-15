@@ -2411,6 +2411,21 @@ textarea.form-control {
   background-color:#FFDFE7CC;
 }
 
+.mc-ecommerce-card.mint {
+  background: #E8FFDC;
+}
+
+.mc-ecommerce-card.cream {
+  background: #FFF4D4;
+}
+
+.mc-ecommerce-card.lilac {
+  background: #E3D6FF;
+}
+
+
+
+
 .mc-ecommerce-card.green {
   background: -webkit-gradient(
     linear,

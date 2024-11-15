@@ -28,11 +28,18 @@
           "value": "notification"
         },
         {
-          "icon": "list",
+          "icon": "description",
           "text": "Upsell Insights",
           "href": "/upselling-items",
           "value": "upselling_items"
+        },
+        {
+          "icon": "list",
+          "text": "3-Step Process",
+          "href": "/3-step-process",
+          "value": "3_step_process"
         }
+
       ]
     }
   ],

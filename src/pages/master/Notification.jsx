@@ -12,18 +12,25 @@ import CustomDropDown from "../../components/elements/CustomDropDown";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { convertDateFormat } from "../../components/helper/helper";
+import CustomDatePicker from "../../components/elements/CustomDatePicker";
 
 const Notification = () => {
   
-  const [notificationData, setNotificationData] = useState([]);
+  const [formattedDate, setFormattedDate] = useState('');
+    const [notificationData, setNotificationData] = useState([]);
+    
   const [notificationGraphData, setNotificationGraphData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const itemsPerPage = 10;
+
+
   const endpoint = "https://api.hongs.razorsharp.in";
-  const getNotificationData = async () => {
+  const getNotificationData = async (page) => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/notification/show/2304`,
+        `${endpoint}/notification/show/2304?page=${page}&filter_date=${formattedDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -53,29 +60,42 @@ const Notification = () => {
     }
   };
 
+
+
+  const handlePageClick = ({ selected }) => {
+    setPageNumber(selected + 1);
+    getNotificationData(selected + 1);
+  };
+    
   useEffect(() => {
     getNotificationData(); 
     getNotificationGraphData()
   }, []);
- 
-    
-  const displayTable = notificationData?.map((item, index) => {
+
+  useEffect(()=>{
+    getNotificationData(pageNumber)
+
+  },[formattedDate])
+  
+  
+  const displayTable = notificationData?.rows?.map((item, index) => {
     return (
       <Tr key={index}>
         <Td title={index + 1}>
           <Box className="mc-table-check">
-            <Text>{index + 1}</Text>
+            <Text>{(pageNumber - 1) * 10 + index + 1}</Text>
           </Box>
         </Td>
         <Td>{convertDateFormat(item.today_date)}</Td>
         <Td>{item.time_of_message}</Td>
         <Td>{item.message}</Td>
         <Td>{item.branch_name}</Td>
-        <Td>{item.action_taken?item.action_taken:0}</Td>
+        <Td>{item.action_taken ? "Yes" : "No"}</Td>
       </Tr>
     );
   });
   
+  const pageCount = Math.ceil(notificationData?.totalRows / itemsPerPage);
   const loading = false;
   return (
     <PageLayout>
@@ -84,7 +104,7 @@ const Notification = () => {
           <LoaderProvider />
         ) : (
           <Row>
-             <CustomDropDown/>
+            <CustomDropDown />
             <Col xl={12}>
               <Box style={{ background: "#9A6ADB33 " }} className="mc-card">
                 <Breadcrumb title={data?.pageTitle}>
@@ -104,12 +124,21 @@ const Notification = () => {
             </Col>
 
             <Col xl={12}>
-          
-              <CustomBarChart background="#77DD7729" barColor="#3CAB00" data={notificationGraphData} />
+              <CustomBarChart
+                background="#77DD7729"
+                barColor="#3CAB00"
+                data={notificationGraphData}
+              />
+            </Col>
+
+            <Col md={8}></Col>
+
+            <Col md={4}>
+              <CustomDatePicker setFormattedDate={setFormattedDate}/>
             </Col>
 
             <Col xs={12} sm={12} xl={12}>
-            <div class="col-xl-12" id="category-data">
+              <div class="col-xl-12" id="category-data">
                 <Table className="mc-table product">
                   <Thead className="mc-table-head primary">
                     <Tr>
@@ -132,8 +161,8 @@ const Notification = () => {
               <ReactPaginate
                 previousLabel={"⟵"}
                 nextLabel={"⟶"}
-                // pageCount={pageCount}
-                // onPageChange={changePage}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
                 containerClassName={"paginationBttns"}
                 previousClassName={"pre"}
                 nextClassName={"next"}

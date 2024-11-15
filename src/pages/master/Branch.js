@@ -3,7 +3,7 @@ import { LoaderProvider } from "../../context/Preloader";
 import PageLayout from "../../layouts/PageLayout";
 import { Box } from "@mui/material";
 import data from "../../data/master/branch.json";
-import { Breadcrumb, DotsMenu, DropdownMenu } from "../../components";
+import { Breadcrumb, DotsMenu, DropdownMenu, Pagination } from "../../components";
 
 import { Anchor, Item, Text } from "../../components/elements";
 import {
@@ -21,27 +21,41 @@ import { useEffect, useState } from "react";
 
 const Branch = () => {
   const [branchData, setBranchData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const itemsPerPage = 10;
 
   const endpoint = "https://api.hongs.razorsharp.in";
 
-  const getBranches = async () => {
+  const getBranches = async (page) => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
-      const response = await axios.get(`${endpoint}/common/get-branch`, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Send token in Authorization header
-        },
-      });
+      // `${endpoint}/upselling/get-info/2304?page=${page}`,
+
+      const response = await axios.get(
+        `${endpoint}/common/get-branch?page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send token in Authorization header
+          },
+        }
+      );
       setBranchData(response?.data);
     } catch (error) {
       console.error("Error fetching data:", error); // Handle errors
     }
   };
 
+  const handlePageClick = ({ selected }) => {
+    console.log(selected, "branch mein hu");
+
+    getBranches(selected + 1);
+    setPageNumber(selected + 1);
+  };
+
   useEffect(() => {
-    getBranches();
-  }, []); // Empty array ensures the effect runs once after the initial render
+    getBranches(pageNumber);
+  }, [pageNumber]); // Empty array ensures the effect runs once after the initial render
 
   // const mcdBranches = [
   //   { name: "Sec 63, Noida", location: "Noida, Uttar Pradesh" },
@@ -61,7 +75,7 @@ const Branch = () => {
       <Tr key={index}>
         <Td title={index + 1}>
           <Box className="mc-table-check">
-            <Text>{index + 1}</Text>
+          <Text>{(pageNumber-1)*10 + index + 1}</Text>
           </Box>
         </Td>
         <td>{branch.branch_name}</td>
@@ -72,6 +86,7 @@ const Branch = () => {
     );
   });
 
+  const pageCount = Math.ceil(1 / itemsPerPage);
   const loading = false;
   return (
     <>
@@ -123,8 +138,8 @@ const Branch = () => {
               <ReactPaginate
                 previousLabel={"⟵"}
                 nextLabel={"⟶"}
-                // pageCount={pageCount}
-                // onPageChange={changePage}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
                 containerClassName={"paginationBttns"}
                 previousClassName={"pre"}
                 nextClassName={"next"}
