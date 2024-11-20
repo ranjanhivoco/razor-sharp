@@ -1,4 +1,5 @@
-// import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import {
   FunnelChart,
   Funnel,
@@ -9,79 +10,42 @@ import {
   Cell,
 } from "recharts";
 
-const data = [
-  { value: 100, name: "Total Orders", fill: "#FD8744" }, // Orange
-  { value: 80, name: "Upsell Opportunities", fill: "#0B8FD9" }, // Blue
-  { value: 50, name: "Successful Upsell Conversions", fill: "#47A563" }, // Green
-];
+const CustomFunnelChart = ({ selectedRange }) => {
+  const [upsellGraphData, setUpsellGraphData] = useState([
+    { value: 70, name: "Total Orders", fill: "#FD8744" },
+    { value: 80, name: "Upsell Opportunities", fill: "#0B8FD9" },
+    { value: 10, name: "Successful Upsell Conversions", fill: "#47A563" },
+  ]);
 
-const CustomFunnelChart = () => {
+  const UpsellAttemptsData = async () => {
+    const url = "https://api.hongs.razorsharp.in";
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        `${url}/dashboard/upsell/2304/${selectedRange.toLowerCase()}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUpsellGraphData([
+        { ...upsellGraphData[0], value: response.data.currentTotalOrder },
+        { ...upsellGraphData[1], value: response.data.currentTotalAttempted },
+        { ...upsellGraphData[2], value: response.data.currentTotalsuccessful },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    UpsellAttemptsData();
+  }, [selectedRange]);
+
   return (
-    // <div style={{ width: "500px", height: "234px" }}>
-    //   <ResponsiveContainer width="100%" height="100%">
-    //     <FunnelChart>
-    //       <Legend
-    //         height={36}
-    //         iconType="circle"
-    //         layout="vertical"
-    //         verticalAlign="middle"
-    //         align="right"
-    //         iconSize={8}
-    //         formatter={renderColorfulLegendText}
-    //       />
-
-    //       <Funnel dataKey="value" data={data} isAnimationActive>
-    //         <LabelList
-    //           position="center"
-    //           fill="#fff"
-    //           stroke="none"
-    //           dataKey="value"
-    //         />
-    //       </Funnel>
-    //     </FunnelChart>
-    //   </ResponsiveContainer>
-
-    //   {/* <div
-    //     style={{
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       position: "absolute",
-    //       right: "10px",
-    //       top: "10px",
-    //       backgroundColor: "rgba(255, 255, 255, 0.8)",
-    //       padding: "10px",
-    //       borderRadius: "5px",
-    //     }}
-    //   >
-    //     {data?.map((entry, index) => (
-    //       <div
-    //         key={`item-${index}`}
-    //         style={{
-    //           display: "flex",
-    //           alignItems: "center",
-    //           marginBottom: "5px",
-    //         }}
-    //       >
-    //         <div
-    //           style={{
-    //             width: "10px",
-    //             height: "10px",
-    //             borderRadius: "50%",
-    //             backgroundColor: entry.fill,
-    //             marginRight: "5px",
-    //           }}
-    //         />
-    //         <span style={{ color: "#000", fontSize: "12px" }}>
-    //           {entry.name}
-    //         </span>
-    //       </div>
-    //     ))}
-    //   </div> */}
-    // </div>
-
-    // <div style={{ width: "500px", height: "234px" }}>
-    // <ResponsiveContainer width="100%" height="100%">
-
     <div
       style={{
         display: "flex",
@@ -98,7 +62,7 @@ const CustomFunnelChart = () => {
           verticalAlign="bottom"
           horizOriginX={0}
           layout="vertical"
-          payload={data.map((item) => ({
+          payload={upsellGraphData?.map((item) => ({
             value: item.name,
             type: "circle",
             id: item.name,
@@ -114,7 +78,7 @@ const CustomFunnelChart = () => {
 
         <Funnel
           dataKey="value"
-          data={data}
+          data={upsellGraphData}
           isAnimationActive
           label={{ position: "center", fill: "#fff" }}
         >
@@ -127,10 +91,6 @@ const CustomFunnelChart = () => {
         </Funnel>
       </FunnelChart>
     </div>
-
-    //  </ResponsiveContainer>
-
-    // </div>
   );
 };
 

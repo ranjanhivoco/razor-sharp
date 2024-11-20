@@ -1,6 +1,7 @@
 import React from "react";
 import DotsMenu from "../DotsMenu";
 import { Box, Icon, Text, Heading } from "../elements";
+import TimePeriodSelector from "../elements/TimePeriodSelector";
 
 export default function EcommerceCard({
   variant,
@@ -43,7 +44,9 @@ export default function EcommerceCard({
         </Box>
 
         {/* <DotsMenu dots={ dotsMenu.dots } dropdown={ dotsMenu.dropdown } /> */}
+
       </Box>
+
     </Box>
   );
 }

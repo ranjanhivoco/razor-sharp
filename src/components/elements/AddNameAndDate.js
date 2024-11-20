@@ -26,7 +26,7 @@ const AddNameAndDate = ({ title, hideDate,range,setRange }) => {
         {title}
       </h3>
 
-      <div
+      {/* <div
         style={{
           display: "block",
         }}
@@ -34,7 +34,7 @@ const AddNameAndDate = ({ title, hideDate,range,setRange }) => {
       >
         {!hideDate && <DateRangePicker range={range} setRange={setRange} />}
         
-      </div>
+      </div> */}
     </div>
   );
 };
