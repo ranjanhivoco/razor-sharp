@@ -1,3 +1,4 @@
+import axios from "axios";
 import { values } from "lodash";
 import React, { PureComponent, useEffect, useState } from "react";
 import { PieChart, Pie, Legend, ResponsiveContainer, Tooltip } from "recharts";
@@ -10,23 +11,47 @@ const renderColorfulLegendText = (value, entry) => {
   );
 };
 
-const DashBoardDonut = ({ maleCount, femaleCount }) => {
-  const [data, setData] = useState([
-    { name: "Female", value: Number(femaleCount), fill: "#EE396A" },
-    { name: "Male", value: Number(maleCount), fill: "#4287FF" },
-  ]);
+const DashBoardDonut = ({ selectedRange }) => {
+  const [customerGraphData, setCustomerGraphData] = useState([]);
+
+  const getCustomerGraphData = async () => {
+    const endpoint = "https://api.hongs.razorsharp.in";
+    try {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      const response = await axios.get(
+        `${endpoint}/dashboard/customer/2304/${selectedRange.toLowerCase()}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setCustomerGraphData([
+        {
+          name: "Female",
+          value: Number(response?.data?.currentMaleSum),
+          fill: "#EE396A",
+        },
+        {
+          name: "Male",
+          value: Number(response?.data?.currentFemaleSum),
+          fill: "#4287FF",
+        },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    setData([
-      { ...data[0], value: Number(femaleCount) },
-      { ...data[1], value: Number(maleCount) },
-    ]);
-  }, [maleCount, femaleCount]);
+    getCustomerGraphData();
+  }, [selectedRange]);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
-        {/* text */}
         <Legend
           //   height={50}
           iconType="circle"
@@ -46,7 +71,7 @@ const DashBoardDonut = ({ maleCount, femaleCount }) => {
         />
 
         <Pie
-          data={data}
+          data={customerGraphData}
           cx={140}
           // cy={90}
           outerRadius={100}

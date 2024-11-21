@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Section({ as, children, className }) {
+export default function Section({ as, children, className,style }) {
     const Component = as || "section";
-    return <Component className={ className }>{ children }</Component>
+    return (
+      <Component style={style} className={className}>
+        {children}
+      </Component>
+    );
 }

@@ -10,7 +10,8 @@ export default function Sidebar() {
   return (
     <Section
       as="aside"
-      className={`mc-sidebar thin-scrolling ${drawer ? "active" : ""}`}
+      style={{ zIndex: "420" }}
+      className={`z-3 mc-sidebar thin-scrolling ${drawer ? "active" : ""}`}
     >
       <MultipleMenu data={data?.navs} />
 

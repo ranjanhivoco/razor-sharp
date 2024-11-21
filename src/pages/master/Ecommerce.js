@@ -5,22 +5,6 @@ import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/ecommerce.json";
 import { Box } from "../../components/elements";
 import { EcommerceCard } from "../../components/cards";
-// import authHeader from "../../backendAxios/authHeader";
-// import {
-//   hostedAuthAxios,
-//   hostedCategoryAxios,
-//   hostedCouponAxios,
-//   hostedOrderAxios,
-//   hostedSellerAuthAxios,
-//   hostedSellerProductAxios,
-// } from "../../backendAxios/backendAxios";
-// import CustomBarChart from "../../components/charts/CustomBarChart";
-// import DonutChart from "../../components/charts/DonutChart";
-// import CustomPieChart from "../../components/charts/CustomPieChart";
-// import CustomBubbleChart from "../../components/charts/CustomBubbleChart";
-// import PastDatePicker from "../../components/elements/DateRangePicker";
-// import DateRangePicker from "../../components/elements/DateRangePicker";
-// import CustomDateRangePicker from "../../components/elements/DateRangePicker";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import WordCloudComponent from "../../components/elements/WordCloudComponent";
 import StackChart from "../../components/charts/StackChart";
@@ -33,30 +17,8 @@ import CustomFunnelChart from "../../components/charts/CustomFunnelChart";
 import TimePeriodSelector from "../../components/elements/TimePeriodSelector";
 
 export default function Ecommerce() {
-  const [cardsInfo, setCardsInfo] = useState([]);
-  const [cardsInfo2, setCardsInfo2] = useState([]);
-
-  const [satisficationDateRange, setSatisficationDateRange] = useState({
-    startDate: "10/01/2024",
-    endDate: "10/08/2024",
-  });
-
-  const [customerDateRange, setCustomerDateRange] = useState({
-    startDate: "10/01/2024",
-    endDate: "10/08/2024",
-  });
-
-  const [upSellAttemptsDateRange, setUpSellAttemptsDateRange] = useState({
-    startDate: "10/01/2024",
-    endDate: "10/08/2024",
-  });
-
-  const [customerGraphData, setCustomerGraphData] = useState();
-
   const [cardDetails, setCardDetails] = useState([]);
-
   const [selectedRange, setSelectedRange] = useState("7D");
-
 
   const getCardDetails = async () => {
     const url = "https://api.hongs.razorsharp.in";
@@ -78,108 +40,24 @@ export default function Ecommerce() {
     }
   };
 
-
-  
-
-  const getCardsInfo = async () => {
-    try {
-      const tokenString = sessionStorage.getItem("token");
-      const token = JSON.parse(tokenString);
-      const response = await axios.get(
-        "https://api.hongs.razorsharp.in/common/dashboard-card-info-1/2304",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setCardsInfo(response.data);
-      
-    } catch (error) {
-      console.error(error);
+  function getTimePeriodText(period) {
+    period = period.toLowerCase();
+    if (period === "7d") {
+      return "Last week";
+    } else if (period === "14d") {
+      return "Last fortnight";
+    } else if (period === "1m") {
+      return "Last month";
+    } else if (period === "3m") {
+      return "Last quarter";
+    } else {
+      return "Invalid period";
     }
-  };
-
-  const getCardsInfo2 = async () => {
-    try {
-      const tokenString = sessionStorage.getItem("token");
-      const token = JSON.parse(tokenString);
-      const response = await axios.get(
-        "  https://api.hongs.razorsharp.in/common/dashboard-card-info-2/2304",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setCardsInfo2(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getCustomerSatisfactionData = async () => {
-    try {
-      const tokenString = sessionStorage.getItem("token");
-      const token = JSON.parse(tokenString);
-      const response = await axios.get(
-        `https://api.hongs.razorsharp.in/customer/dashboard/2304?start_date=${satisficationDateRange.startDate}&end_date=${satisficationDateRange.endDate}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  }
 
   useEffect(() => {
-    // getCardsInfo();
-    // getCardsInfo2();
-    getCardDetails()
+    getCardDetails();
   }, [selectedRange]);
-
-  useEffect(() => {
-    if (satisficationDateRange.startDate && satisficationDateRange.endDate) {
-      getCustomerSatisfactionData();
-    }
-  }, [satisficationDateRange]);
-
-  const getCustomerGraphData = async () => {
-    try {
-      const tokenString = sessionStorage.getItem("token");
-      const token = JSON.parse(tokenString);
-      const response = await axios.get(
-        `https://api.hongs.razorsharp.in/customer/dashboard/2304?start_date=${customerDateRange.startDate}&end_date=${customerDateRange.endDate}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setCustomerGraphData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    if (customerDateRange.startDate && customerDateRange.endDate) {
-      getCustomerGraphData();
-    }
-  }, [customerDateRange]);
-
-  // const getAllCouponsList = async () => {
-  //   const result = await hostedCouponAxios.get("/get-all-coupon", {
-  //     headers: authHeader(),
-  //   });
-  //   setCouponCount(result?.data?.length);
-  // };
 
   return (
     <PageLayout>
@@ -187,7 +65,7 @@ export default function Ecommerce() {
         <CustomDropDown />
 
         <Col
-          style={{ position: "sticky", top: "43px", zIndex: "1000" }}
+          style={{ position: "sticky", top: "43px", zIndex: "400" }}
           xl={12}
         >
           <Box
@@ -212,7 +90,7 @@ export default function Ecommerce() {
               ))} */}
 
               <TimePeriodSelector
-                selectedRange={selectedRange}
+                selectedRange={selectedRange.toLowerCase()}
                 setSelectedRange={setSelectedRange}
               />
             </Breadcrumb>
@@ -233,7 +111,7 @@ export default function Ecommerce() {
                   ) + "%"
                 }
                 variant="purple"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
 
@@ -250,7 +128,7 @@ export default function Ecommerce() {
                   ) + "%"
                 }
                 variant="blue"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
 
@@ -269,7 +147,7 @@ export default function Ecommerce() {
                   ) + "%"
                 }
                 variant="pink"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
 
@@ -289,7 +167,7 @@ export default function Ecommerce() {
                   ) + "%"
                 }
                 variant="yellow"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
 
@@ -305,7 +183,7 @@ export default function Ecommerce() {
                   ) + "%"
                 }
                 variant="blue"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
 
@@ -317,7 +195,7 @@ export default function Ecommerce() {
                 number={1}
                 variant="purple"
                 percent="0%"
-                compare="last month"
+                compare={getTimePeriodText(selectedRange)}
               />
             </Col>
           </Row>
@@ -338,11 +216,7 @@ export default function Ecommerce() {
           >
             <Row>
               <Col md={12}>
-                <AddNameAndDate
-                  title={"Customer Satisfaction"}
-                  range={satisficationDateRange}
-                  setRange={setSatisficationDateRange}
-                />
+                <AddNameAndDate title={"Customer Satisfaction"} />
               </Col>
               <Col md={12}>
                 <StackChart />
@@ -360,15 +234,10 @@ export default function Ecommerce() {
             }}
             className="mc-card"
           >
-            <AddNameAndDate
-              hideDate={false}
-              title={"Upsell Attempts"}
-              range={upSellAttemptsDateRange}
-              setRange={setUpSellAttemptsDateRange}
-            />
+            <AddNameAndDate hideDate={false} title={"Upsell Attempts"} />
 
             <Col style={{ height: "", marginTop: "60px" }} xs={12} md={12}>
-              <CustomFunnelChart  selectedRange={selectedRange}/>
+              <CustomFunnelChart selectedRange={selectedRange} />
             </Col>
           </Box>
         </Col>
@@ -382,40 +251,25 @@ export default function Ecommerce() {
             }}
             className="mc-card"
           >
-            <AddNameAndDate
-              hideDate={false}
-              title={"Customer"}
-              range={customerDateRange}
-              setRange={setCustomerDateRange}
-            />
+            <AddNameAndDate hideDate={false} title={"Customer"} />
 
             <Col style={{ height: "200px" }} xs={12} md={12}>
-              <DashBoardDonut
-                maleCount={customerGraphData?.male?.total_male_count}
-                femaleCount={customerGraphData?.female?.total_female_count}
-              />
+              <DashBoardDonut selectedRange={selectedRange} />
             </Col>
           </Box>
 
           <Box
             style={{
               borderRadius: "8px",
-              background: "#9A6ADB29",
+              background: "#77DD7729",
               height: "48%",
             }}
             className="mc-card"
           >
-            <AddNameAndDate
-              range={upSellAttemptsDateRange}
-              setRange={setUpSellAttemptsDateRange}
-              hideDate={false}
-              title={"3-Step Summary"}
-            />
+            <AddNameAndDate hideDate={false} title={"3-Step Summary"} />
 
             <Col style={{ height: "200px" }} xs={12} md={12}>
-              <DashBoardPieChart
-              // attempted={156} successfull={125}
-              />
+              <DashBoardPieChart selectedRange={selectedRange} />
             </Col>
           </Box>
         </Col>

@@ -10,49 +10,18 @@ import {
 } from "recharts";
 
 const StackChart = () => {
-    const data = [
-      { date: "01/10/24", No: 30, Yes: 70 },
-      { date: "02/10/24", No: 45, Yes: 55 },
-      { date: "03/10/24", No: 25, Yes: 75 },
-      { date: "04/10/24", No: 40, Yes: 60 },
-      { date: "05/10/24", No: 60, Yes: 40 },
-      { date: "06/10/24", No: 55, Yes: 45 },
-      { date: "07/10/24", No: 35, Yes: 65 },
-      { date: "08/10/24", No: 20, Yes: 80 },
-    ];
-
-  // const data = [
-  //   { date: "30-10-24", Yes: 50, No: 30 },
-  //   { date: "31-10-24", Yes: 80, No: 50 },
-  //   { date: "01-11-24", Yes: 75, No: 40 },
-  //   { date: "02-11-24", Yes: 80, No: 20 },
-  //   { date: "03-11-24", Yes: 90, No: 50 },
-  //   { date: "04-11-24", Yes: 50, No: 30 },
-  //   { date: "05-11-24", Yes: 30, No: 20 },
-
-
-  // ];
+  const data = [
+    { date: "01/10/24", No: 30, Yes: 70 },
+    { date: "02/10/24", No: 45, Yes: 55 },
+    { date: "03/10/24", No: 25, Yes: 75 },
+    { date: "04/10/24", No: 40, Yes: 60 },
+    { date: "05/10/24", No: 60, Yes: 40 },
+    { date: "06/10/24", No: 55, Yes: 45 },
+    { date: "07/10/24", No: 35, Yes: 65 },
+    { date: "08/10/24", No: 20, Yes: 80 },
+  ];
 
   return (
-    // <ResponsiveContainer
-    //   style={{
-    //     // border:"1px solid red",
-    //     marginTop: "",
-    //   }}
-    //   width="100%"
-    //   height={300}
-    // >
-    //   <BarChart data={data}>
-    //     <CartesianGrid />
-    //     <XAxis dataKey="name" />
-    //     <YAxis />
-    //     <Tooltip />
-    //     <Legend />
-    //     <Bar dataKey="No" stackId="a" fill="#4287FF" />
-    //     <Bar dataKey="Yes" stackId="a" fill="#F8BC00" />
-    //   </BarChart>
-    // </ResponsiveContainer>
-
     <ResponsiveContainer width="100%" height={300}>
       <BarChart
         style={{ backgroundColor: "#E5EEFF" }}

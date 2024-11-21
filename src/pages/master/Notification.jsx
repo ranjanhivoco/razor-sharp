@@ -33,13 +33,13 @@ const Notification = () => {
         `${endpoint}/notification/show/2304?page=${page}&filter_date=${formattedDate}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Send token in Authorization header
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       setNotificationData(response?.data);
     } catch (error) {
-      console.error("Error fetching data:", error); // Handle errors
+      console.error("Error fetching data:", error); 
     }
   };
   const getNotificationGraphData= async () => {

@@ -3,7 +3,7 @@ import { ButtonGroup, Button } from "react-bootstrap";
 
 const TimeRangeSelector = ({ selectedRange, setSelectedRange }) => {
   const handleSelect = (range) => {
-    setSelectedRange(range);
+    setSelectedRange(range.toLowerCase());
   };
 
   return (
@@ -13,7 +13,11 @@ const TimeRangeSelector = ({ selectedRange, setSelectedRange }) => {
           variant=""
           key={range}
           onClick={() => handleSelect(range)}
-          className={`time-button ${selectedRange === range ? "selected" : ""}`}
+          className={`time-button ${
+            selectedRange.toLowerCase() === range.toLowerCase()
+              ? "selected"
+              : ""
+          }`}
         >
           {range}
         </Button>

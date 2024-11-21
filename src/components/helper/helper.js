@@ -3,14 +3,16 @@ export const convertDateFormat = (dateString) => {
   return `${day}/${month}/${year}`;
 };
 
+export const formatLargeNumber = (number) => {
+  if (number >= 1_000_000) {
+    return (number / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+  } else if (number >= 1_000) {
+    return (number / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+  }
+  return number.toString();
+};
 
-// const inputDate = "10/17/24";
-// const outputDate = convertDateFormat(inputDate);
-// (outputDate); // Output: "17/10/24"
-
-
-
-export  const dateStringToMMDDYY  = (dateString) => {
+export const dateStringToMMDDYY = (dateString) => {
   return dateString
     ? dateString.toLocaleDateString("en-US", {
         year: "numeric",
@@ -19,3 +21,19 @@ export  const dateStringToMMDDYY  = (dateString) => {
       })
     : null;
 };
+
+export const getTimePeriodText = (period) => {
+  period = period.toLowerCase();
+  if (period === "7d") {
+    return "Last week";
+  } else if (period === "14d") {
+    return "Last fortnight";
+  } else if (period === "1m") {
+    return "Last month";
+  } else if (period === "3m") {
+    return "Last quarter";
+  } else {
+    return "Invalid period";
+  }
+};
+
