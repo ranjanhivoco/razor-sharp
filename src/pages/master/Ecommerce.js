@@ -15,6 +15,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import CustomFunnelChart from "../../components/charts/CustomFunnelChart";
 import TimePeriodSelector from "../../components/elements/TimePeriodSelector";
+import DynamicLineChart from "../../components/charts/DynamicLineChart";
 
 export default function Ecommerce() {
   const [cardDetails, setCardDetails] = useState([]);
@@ -64,10 +65,7 @@ export default function Ecommerce() {
       <Row>
         <CustomDropDown />
 
-        <Col
-          style={{ position: "sticky", top: "43px", zIndex: "400" }}
-          xl={12}
-        >
+        <Col style={{ position: "sticky", top: "43px", zIndex: "400" }} xl={12}>
           <Box
             style={{
               //  background: "#FFF5D580",
@@ -219,7 +217,8 @@ export default function Ecommerce() {
                 <AddNameAndDate title={"Customer Satisfaction"} />
               </Col>
               <Col md={12}>
-                <StackChart />
+                <DynamicLineChart  selectedRange={selectedRange} />
+                {/* <StackChart selectedRange={selectedRange} /> */}
               </Col>
             </Row>
           </Box>

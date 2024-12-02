@@ -22,18 +22,5 @@ export const dateStringToMMDDYY = (dateString) => {
     : null;
 };
 
-export const getTimePeriodText = (period) => {
-  period = period.toLowerCase();
-  if (period === "7d") {
-    return "Last week";
-  } else if (period === "14d") {
-    return "Last fortnight";
-  } else if (period === "1m") {
-    return "Last month";
-  } else if (period === "3m") {
-    return "Last quarter";
-  } else {
-    return "Invalid period";
-  }
-};
+
 

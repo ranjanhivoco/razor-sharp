@@ -74,7 +74,8 @@ const CustomFunnelChart = ({ selectedRange }) => {
           //     {`${value}: ${entry.payload.value}`}
           //   </span>
           // )}
-          contentStyle={{ fontSize: "14px", fontWeight: "bold", color: "#000" }}
+          
+          contentStyle={{ fontSize: "14px", fontWeight: "bold", color: "#000" }}      
         />
 
         <Funnel
