@@ -1,7 +1,8 @@
 import axios from "axios";
 import { values } from "lodash";
-import React, { PureComponent, useEffect, useState } from "react";
+import React, { PureComponent, useContext, useEffect, useState } from "react";
 import { PieChart, Pie, Legend, ResponsiveContainer, Tooltip } from "recharts";
+import { BranchIDContext } from "../context/branchID";
 
 const renderColorfulLegendText = (value, entry) => {
   return (
@@ -13,6 +14,8 @@ const renderColorfulLegendText = (value, entry) => {
 
 const DashBoardDonut = ({ selectedRange }) => {
   const [customerGraphData, setCustomerGraphData] = useState([]);
+  const { branchID } = useContext(BranchIDContext);
+
 
   const getCustomerGraphData = async () => {
     const endpoint = "https://api.hongs.razorsharp.in";
@@ -20,7 +23,7 @@ const DashBoardDonut = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${endpoint}/dashboard/customer/2306/${selectedRange.toLowerCase()}`,
+        `${endpoint}/dashboard/customer/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +50,7 @@ const DashBoardDonut = ({ selectedRange }) => {
 
   useEffect(() => {
     getCustomerGraphData();
-  }, [selectedRange]);
+  }, [selectedRange, branchID]);
 
   return (
     <ResponsiveContainer width="100%" height="100%">

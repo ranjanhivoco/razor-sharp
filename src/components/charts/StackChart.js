@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,9 +11,12 @@ import {
   // Legend,
   // ResponsiveContainer,
 } from "recharts";
+import { BranchIDContext } from "../context/branchID";
 
 const StackChart = ({ selectedRange }) => {
   const [userSatisfationData, setUserSatisfationData] = useState();
+  const { branchID } = useContext(BranchIDContext);
+
   
   // Function to group by weeks
   const groupByWeeks = (data) => {
@@ -58,7 +61,7 @@ const StackChart = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${url}/dashboard/satisfaction/2306/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/satisfaction/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -9,15 +9,18 @@ import { Anchor, Item, Text } from "../../components/elements";
 import ReactPaginate from "react-paginate";
 import data from "../../data/master/ThreeStepProcess.json";
 import { Breadcrumb } from "../../components";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { convertDateFormat } from "../../components/helper/helper";
+import { BranchIDContext } from "../../components/context/branchID";
 
 const ThreeStepProcess = () => {
   const [formattedDate, setFormattedDate] = useState("");
   const [processData, setProcessData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const { branchID } = useContext(BranchIDContext);
+
 
   console.log(processData,'process data');
   
@@ -29,7 +32,7 @@ const ThreeStepProcess = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/procedure/get-info/2306?page=${page}&filter_date=${formattedDate || ""}`,
+        `${endpoint}/procedure/get-info/${branchID}?page=${page}&filter_date=${formattedDate || ""}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -65,7 +68,7 @@ const ThreeStepProcess = () => {
 
   useEffect(() => {
     getStepsData(pageNumber);
-  }, [formattedDate]);
+  }, [formattedDate,branchID]);
 
   const pageCount = Math.ceil(processData?.totalRows / itemsPerPage) || 0;
   return (

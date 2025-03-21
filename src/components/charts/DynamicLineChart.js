@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import {
   LineChart,
@@ -11,10 +11,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { size } from "lodash";
+import { BranchIDContext } from "../context/branchID";
 
 const DynamicLineChart = ({ selectedRange }) => {
   const [userSatisfationData, setUserSatisfationData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { branchID } = useContext(BranchIDContext);
+
 
   const getUserSatisfationData = async () => {
     setLoading(true);
@@ -29,7 +32,7 @@ const DynamicLineChart = ({ selectedRange }) => {
       }
 
       const response = await axios.get(
-        `${url}/dashboard/satisfaction/2306/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/satisfaction/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +50,7 @@ const DynamicLineChart = ({ selectedRange }) => {
 
   useEffect(() => {
     getUserSatisfationData();
-  }, [selectedRange]);
+  }, [selectedRange,branchID]);
 
   // Calculate the maximum value of "yes" and "no" in the data
   const getMaxValue = () => {

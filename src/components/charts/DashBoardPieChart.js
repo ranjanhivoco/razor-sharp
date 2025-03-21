@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   PieChart,
   Pie,
@@ -8,6 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { BranchIDContext } from "../context/branchID";
 
 const COLORS = ["#4287FF", "#77C54D", "#F15633"];
 const renderColorfulLegendText = (value, entry) => {
@@ -27,6 +28,8 @@ const renderColorfulLegendText = (value, entry) => {
 
 const DashBoardPieChart = ({ selectedRange }) => {
   const [threeStepProcessData, setThreeStepProcessData] = useState([]);
+  const { branchID } = useContext(BranchIDContext);
+
 
   const getThreeStepsData = async () => {
     const endpoint = "https://api.hongs.razorsharp.in";
@@ -34,7 +37,7 @@ const DashBoardPieChart = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${endpoint}/dashboard/procedure/2306/${selectedRange.toLowerCase()}`,
+        `${endpoint}/dashboard/procedure/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -93,7 +96,7 @@ const DashBoardPieChart = ({ selectedRange }) => {
 
   useEffect(() => {
     getThreeStepsData();
-  }, [selectedRange]);
+  }, [selectedRange,branchID]);
 
   return (
     <ResponsiveContainer width="100%" height="100%">

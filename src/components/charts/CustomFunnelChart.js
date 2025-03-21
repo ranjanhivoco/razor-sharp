@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   FunnelChart,
   Funnel,
@@ -10,13 +10,18 @@ import {
   
   Cell,
 } from "recharts";
+import { BranchIDContext } from "../context/branchID";
 
 const CustomFunnelChart = ({ selectedRange }) => {
   const [upsellGraphData, setUpsellGraphData] = useState([
     { value: 70, name: "Total Orders", fill: "#FD8744" },
     { value: 80, name: "Upsell Opportunities", fill: "#0B8FD9" },
     { value: 10, name: "Successful Upsell Conversions", fill: "#47A563" },
+    
   ]);
+
+  const { branchID } = useContext(BranchIDContext);
+
 
   const UpsellAttemptsData = async () => {
     const url = "https://api.hongs.razorsharp.in";
@@ -24,7 +29,7 @@ const CustomFunnelChart = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${url}/dashboard/upsell/2306/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/upsell/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -44,7 +49,7 @@ const CustomFunnelChart = ({ selectedRange }) => {
 
   useEffect(() => {
     UpsellAttemptsData();
-  }, [selectedRange]);
+  }, [selectedRange,branchID]);
 
   return (
     <div

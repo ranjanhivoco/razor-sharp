@@ -26,16 +26,19 @@ import {
 import DonutChart from "../../components/charts/DonutChart";
 import { BarChart } from "recharts";
 import CustomBarChart from "../../components/charts/CustomBarChart";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import CustomDropDown from "../../components/elements/CustomDropDown";
 import CustomDatePicker from "../../components/elements/CustomDatePicker";
+import { BranchIDContext } from "../../components/context/branchID";
 
 const Customer = () => {
   const [formattedDate, setFormattedDate] = useState("");
 
   const [customerData, setCustomerData] = useState();
   const [pageNumber, setPageNumber] = useState(1);
+  const { branchID } = useContext(BranchIDContext);
+  
   const itemsPerPage = 10;
 
   const endpoint = "https://api.hongs.razorsharp.in";
@@ -44,7 +47,7 @@ const Customer = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/customer/get/2306?page=${page}&filter_date=${
+        `${endpoint}/customer/get/${branchID}?page=${page}&filter_date=${
           formattedDate || ""
         }`,
         {
@@ -61,7 +64,7 @@ const Customer = () => {
 
   useEffect(() => {
     getCustomerData(pageNumber);
-  }, [formattedDate, pageNumber]);
+  }, [formattedDate, pageNumber,branchID]);
 
   const handlePageClick = ({ selected }) => {
     // getCustomerData(selected + 1);

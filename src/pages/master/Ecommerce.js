@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Breadcrumb } from "../../components";
 import PageLayout from "../../layouts/PageLayout";
@@ -16,10 +16,14 @@ import { useEffect } from "react";
 import CustomFunnelChart from "../../components/charts/CustomFunnelChart";
 import TimePeriodSelector from "../../components/elements/TimePeriodSelector";
 import DynamicLineChart from "../../components/charts/DynamicLineChart";
+import { BranchIDContext } from "../../components/context/branchID";
 
 export default function Ecommerce() {
   const [cardDetails, setCardDetails] = useState([]);
   const [selectedRange, setSelectedRange] = useState("7D");
+  const { branchID } = useContext(BranchIDContext);
+
+  
 
   const getCardDetails = async () => {
     const url = "https://api.hongs.razorsharp.in";
@@ -27,7 +31,7 @@ export default function Ecommerce() {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${url}/dashboard/cards/2306/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/cards/${branchID}/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -58,7 +62,7 @@ export default function Ecommerce() {
 
   useEffect(() => {
     getCardDetails();
-  }, [selectedRange]);
+  }, [selectedRange,branchID]);
 
   return (
     <PageLayout>

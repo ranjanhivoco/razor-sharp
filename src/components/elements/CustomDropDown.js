@@ -2,9 +2,13 @@ import { Col, Dropdown } from "react-bootstrap";
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { BranchContext } from "../context/branch";
+import { BranchIDContext } from "../context/branchID";
 
 const CustomDropDown = () => {
   const { branchData, setBranchData } = useContext(BranchContext);
+  const { branchID, setBranchID } = useContext(BranchIDContext);
+  console.log(branchID, "branchID");
+
   const endpoint = "https://api.hongs.razorsharp.in";
 
   const getBranches = async () => {
@@ -16,7 +20,8 @@ const CustomDropDown = () => {
           Authorization: `Bearer ${token}`, // Send token in Authorization header
         },
       });
-      setBranchData(response?.data);      
+      setBranchData(response?.data);
+      // console.log(response?.data);
     } catch (error) {
       console.error("Error fetching data:", error); // Handle errors
     }
@@ -48,24 +53,29 @@ const CustomDropDown = () => {
       >
         <Dropdown>
           <Dropdown.Toggle
-            className="text-black border-dark border-1"
+            className="text-black border-dark border-1 "
             variant=""
             id="dropdown-basic"
           >
             {/* Branch */}
             {branchData && branchData.length > 0
-              ? branchData[2].branch_name
+              ? // branchData[2].branch_name
+                branchData.filter((place) => place.branch_id === branchID)[0]
+                  .branch_name
               : "Branch"}
           </Dropdown.Toggle>
 
-          <Dropdown.Menu style={{}}>
+          <Dropdown.Menu className="text-uppercase" style={{}}>
             {branchData?.map((place, index) => {
               return (
-                <div key={index} style={{ padding: "0 8px" }}>
+                <div
+                  onClick={() => setBranchID(place.branch_id)}
+                  key={place.branch_id}
+                  style={{ padding: "0 8px" }}
+                >
                   <Dropdown.Item
                     style={{ fontSize: "12px", borderRadius: "4px" }}
                     className=""
-                    href="#"
                   >
                     {place.branch_name}
                   </Dropdown.Item>

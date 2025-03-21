@@ -21,6 +21,7 @@ import { ProviderDate } from "./components/context/date.js";
 import { BranchProvider } from "./components/context/branch.js";
 import ThreeStepProcess from "./pages/master/ThreeStepProcess.js";
 import CameraView from "./pages/master/CameraView.js";
+import { BranchIDProvider } from "./components/context/branchID.js";
 const Admin = lazy(() => import("./pages/master/Admin"));
 const Ecommerce = lazy(() => import("./pages/master/Ecommerce"));
 const ForgotPassword = lazy(() => import("./pages/master/ForgotPassword"));
@@ -86,24 +87,25 @@ const CustomerQuestionView = lazy(() =>
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <LoaderProvider>
-        <BranchProvider>
-          <ProviderDate>
-            <BrowserRouter>
-              <Routes>
-                {/* master Pages */}
-                {/* <Route
+    <BranchIDProvider>
+      <ThemeProvider>
+        <LoaderProvider>
+          <BranchProvider>
+            <ProviderDate>
+              <BrowserRouter>
+                <Routes>
+                  {/* master Pages */}
+                  {/* <Route
                 path="/admin"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
                     {/* <Protected> */}
-                {/* <Admin /> */}
-                {/* </Protected> */}
-                {/* </Suspense> */}
-                {/* }
+                  {/* <Admin /> */}
+                  {/* </Protected> */}
+                  {/* </Suspense> */}
+                  {/* }
               /> */}
-                {/* <Route
+                  {/* <Route
                 path="/rating-review"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -222,7 +224,7 @@ export default function App() {
                 }
                   
               /> */}
-                {/* <Route
+                  {/* <Route
                 path="/invoice-details"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -232,7 +234,7 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-                {/* 
+                  {/* 
               <Route
                 path="/my-account"
                 element={
@@ -243,7 +245,7 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-                {/* <Route
+                  {/* <Route
                 path="/contactView"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -253,17 +255,17 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-                <Route
-                  path="/order-list"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      {/* <Protected> */}
-                      <OrderList />
-                      {/* </Protected> */}
-                    </Suspense>
-                  }
-                />
-                {/* <Route
+                  <Route
+                    path="/order-list"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        {/* <Protected> */}
+                        <OrderList />
+                        {/* </Protected> */}
+                      </Suspense>
+                    }
+                  />
+                  {/* <Route
                 path="/return-replace"
                 element={
                   <Suspense fallback={<LoaderProvider />}>
@@ -631,125 +633,126 @@ export default function App() {
                   </Suspense>
                 }
               /> */}
-                {/* Blocks Pages */}
-                {/* <Route path="/headings" element={<Headings />} />
+                  {/* Blocks Pages */}
+                  {/* <Route path="/headings" element={<Headings />} />
               <Route path="/buttons" element={<Buttons />} /> */}
-                {/* <Route path="/avatars" element={<Avatars />} /> */}
-                {/* <Route path="/colors" element={<Colors />} />
+                  {/* <Route path="/avatars" element={<Avatars />} /> */}
+                  {/* <Route path="/colors" element={<Colors />} />
               <Route path="/charts" element={<Charts />} />
               <Route path="/tables" element={<Tables />} />
               <Route path="/fields" element={<Fields />} /> */}
-                {/* <Route path="/alerts" element={<Alerts />} /> */}
-                <Route
-                  path="/notification"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      {/* <Protected> */}
-                      <Notification />
-                      {/* </Protected> */}
-                    </Suspense>
-                  }
-                />
+                  {/* <Route path="/alerts" element={<Alerts />} /> */}
+                  <Route
+                    path="/notification"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        {/* <Protected> */}
+                        <Notification />
+                        {/* </Protected> */}
+                      </Suspense>
+                    }
+                  />
 
-                <Route
-                  path="/camera-view"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      {/* <Protected> */}
-                      <CameraView />
-                      {/* </Protected> */}
-                    </Suspense>
-                  }
-                />
+                  <Route
+                    path="/camera-view"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        {/* <Protected> */}
+                        <CameraView />
+                        {/* </Protected> */}
+                      </Suspense>
+                    }
+                  />
 
-                <Route
-                  path="/inventory-list"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <InventoryList />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Protected>
-                        <Ecommerce />
-                      </Protected>
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/branch"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Protected>
-                        <Branch />
-                      </Protected>
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/customer"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Protected>
-                        <Customer />
-                      </Protected>
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/upselling-items"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Protected>
-                        <UpSelling />
-                      </Protected>
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/chart"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Protected>
-                        <Chart />
-                      </Protected>
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/login"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Login />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/message"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      <Message />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="/3-step-process"
-                  element={
-                    <Suspense fallback={<LoaderProvider />}>
-                      {/* <Message /> */}
-                      <ThreeStepProcess />
-                    </Suspense>
-                  }
-                />
-              </Routes>
-            </BrowserRouter>
-          </ProviderDate>
-        </BranchProvider>
-      </LoaderProvider>
-    </ThemeProvider>
+                  <Route
+                    path="/inventory-list"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <InventoryList />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Protected>
+                          <Ecommerce />
+                        </Protected>
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/branch"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Protected>
+                          <Branch />
+                        </Protected>
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/customer"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Protected>
+                          <Customer />
+                        </Protected>
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/upselling-items"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Protected>
+                          <UpSelling />
+                        </Protected>
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/chart"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Protected>
+                          <Chart />
+                        </Protected>
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/login"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Login />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/message"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        <Message />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/3-step-process"
+                    element={
+                      <Suspense fallback={<LoaderProvider />}>
+                        {/* <Message /> */}
+                        <ThreeStepProcess />
+                      </Suspense>
+                    }
+                  />
+                </Routes>
+              </BrowserRouter>
+            </ProviderDate>
+          </BranchProvider>
+        </LoaderProvider>
+      </ThemeProvider>
+    </BranchIDProvider>
   );
 }

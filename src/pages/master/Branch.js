@@ -30,8 +30,6 @@ const Branch = () => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
-      // `${endpoint}/upselling/get-info/2306?page=${page}`,
-
       const response = await axios.get(
         `${endpoint}/common/get-branch?page=${page}`,
         {

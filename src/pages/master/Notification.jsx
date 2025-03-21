@@ -6,48 +6,57 @@ import { Breadcrumb } from "../../components";
 
 import data from "../../data/master/notification.json";
 import ReactPaginate from "react-paginate";
-import { Table, Tbody, Td, Th, Thead, Tr } from "../../components/elements/Table";
+import {
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "../../components/elements/Table";
 import CustomBarChart from "../../components/charts/CustomBarChart";
 import CustomDropDown from "../../components/elements/CustomDropDown";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { convertDateFormat } from "../../components/helper/helper";
 import CustomDatePicker from "../../components/elements/CustomDatePicker";
+import { BranchIDContext } from "../../components/context/branchID";
 
 const Notification = () => {
-  
-  const [formattedDate, setFormattedDate] = useState('');
-    const [notificationData, setNotificationData] = useState([]);
-    
+  const [formattedDate, setFormattedDate] = useState("");
+  const [notificationData, setNotificationData] = useState([]);
+
   const [notificationGraphData, setNotificationGraphData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const { branchID } = useContext(BranchIDContext);
   const itemsPerPage = 10;
 
-
   const endpoint = "https://api.hongs.razorsharp.in";
-  const getNotificationData = async (page) => {
+  const getNotificationData = async () =>
+    // page paramter
+    {
+      const tokenString = sessionStorage.getItem("token");
+      const token = JSON.parse(tokenString);
+      try {
+        const response = await axios.get(
+          `${endpoint}/notification/show/${branchID}?page=${pageNumber}&filter_date=${formattedDate}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setNotificationData(response?.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  const getNotificationGraphData = async () => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/notification/show/2306?page=${page}&filter_date=${formattedDate}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setNotificationData(response?.data);
-    } catch (error) {
-      console.error("Error fetching data:", error); 
-    }
-  };
-  const getNotificationGraphData= async () => {
-    const tokenString = sessionStorage.getItem("token");
-    const token = JSON.parse(tokenString);
-    try {
-      const response = await axios.get(
-        `${endpoint}/notification/message-count/2306`,
+        `${endpoint}/notification/message-count/${branchID}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -60,24 +69,21 @@ const Notification = () => {
     }
   };
 
-
-
   const handlePageClick = ({ selected }) => {
     setPageNumber(selected + 1);
-    getNotificationData(selected + 1);
+    // getNotificationData(selected + 1);
   };
-    
+
   useEffect(() => {
-    getNotificationData(); 
-    getNotificationGraphData()
-  }, []);
+    getNotificationData();
+    getNotificationGraphData();
+  }, [branchID]);
 
-  useEffect(()=>{
-    getNotificationData(pageNumber)
+  useEffect(() => {
+    getNotificationData();
+    // getNotificationData(pageNumber)
+  }, [formattedDate]);
 
-  },[formattedDate])
-  
-  
   const displayTable = notificationData?.rows?.map((item, index) => {
     return (
       <Tr key={index}>
@@ -94,7 +100,7 @@ const Notification = () => {
       </Tr>
     );
   });
-  
+
   const pageCount = Math.ceil(notificationData?.totalRows / itemsPerPage);
   const loading = false;
   return (
@@ -134,7 +140,7 @@ const Notification = () => {
             <Col md={8}></Col>
 
             <Col md={4}>
-              <CustomDatePicker setFormattedDate={setFormattedDate}/>
+              <CustomDatePicker setFormattedDate={setFormattedDate} />
             </Col>
 
             <Col xs={12} sm={12} xl={12}>
