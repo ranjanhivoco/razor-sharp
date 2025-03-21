@@ -30,7 +30,7 @@ const Notification = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/notification/show/2304?page=${page}&filter_date=${formattedDate}`,
+        `${endpoint}/notification/show/2306?page=${page}&filter_date=${formattedDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ const Notification = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/notification/message-count/2304`,
+        `${endpoint}/notification/message-count/2306`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header

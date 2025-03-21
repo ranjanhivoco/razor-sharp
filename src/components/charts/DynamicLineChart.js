@@ -29,7 +29,7 @@ const DynamicLineChart = ({ selectedRange }) => {
       }
 
       const response = await axios.get(
-        `${url}/dashboard/satisfaction/2304/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/satisfaction/2306/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

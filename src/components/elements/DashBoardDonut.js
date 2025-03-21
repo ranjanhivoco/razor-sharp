@@ -20,7 +20,7 @@ const DashBoardDonut = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${endpoint}/dashboard/customer/2304/${selectedRange.toLowerCase()}`,
+        `${endpoint}/dashboard/customer/2306/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

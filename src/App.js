@@ -20,6 +20,7 @@ import { Chart } from "react-chartjs-2";
 import { ProviderDate } from "./components/context/date.js";
 import { BranchProvider } from "./components/context/branch.js";
 import ThreeStepProcess from "./pages/master/ThreeStepProcess.js";
+import CameraView from "./pages/master/CameraView.js";
 const Admin = lazy(() => import("./pages/master/Admin"));
 const Ecommerce = lazy(() => import("./pages/master/Ecommerce"));
 const ForgotPassword = lazy(() => import("./pages/master/ForgotPassword"));
@@ -649,6 +650,18 @@ export default function App() {
                     </Suspense>
                   }
                 />
+
+                <Route
+                  path="/camera-view"
+                  element={
+                    <Suspense fallback={<LoaderProvider />}>
+                      {/* <Protected> */}
+                      <CameraView />
+                      {/* </Protected> */}
+                    </Suspense>
+                  }
+                />
+
                 <Route
                   path="/inventory-list"
                   element={

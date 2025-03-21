@@ -29,7 +29,7 @@ const ThreeStepProcess = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/procedure/get-info/2304?page=${page}&filter_date=${formattedDate || ""}`,
+        `${endpoint}/procedure/get-info/2306?page=${page}&filter_date=${formattedDate || ""}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Send token in Authorization header

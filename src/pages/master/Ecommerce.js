@@ -27,7 +27,7 @@ export default function Ecommerce() {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${url}/dashboard/cards/2304/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/cards/2306/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

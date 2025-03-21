@@ -30,7 +30,7 @@ const Branch = () => {
     const tokenString = sessionStorage.getItem("token");
     const token = JSON.parse(tokenString);
     try {
-      // `${endpoint}/upselling/get-info/2304?page=${page}`,
+      // `${endpoint}/upselling/get-info/2306?page=${page}`,
 
       const response = await axios.get(
         `${endpoint}/common/get-branch?page=${page}`,
@@ -41,6 +41,7 @@ const Branch = () => {
         }
       );
       setBranchData(response?.data);
+      
     } catch (error) {
       console.error("Error fetching data:", error); // Handle errors
     }

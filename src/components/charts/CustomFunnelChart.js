@@ -24,7 +24,7 @@ const CustomFunnelChart = ({ selectedRange }) => {
       const tokenString = sessionStorage.getItem("token");
       const token = JSON.parse(tokenString);
       const response = await axios.get(
-        `${url}/dashboard/upsell/2304/${selectedRange.toLowerCase()}`,
+        `${url}/dashboard/upsell/2306/${selectedRange.toLowerCase()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

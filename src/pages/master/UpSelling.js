@@ -30,7 +30,7 @@ const UpSelling = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/upselling/get-info/2304?page=${page}&filter_date=${
+        `${endpoint}/upselling/get-info/2306?page=${page}&filter_date=${
           formattedDate || ""
         }`,
         {

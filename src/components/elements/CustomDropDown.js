@@ -16,7 +16,7 @@ const CustomDropDown = () => {
           Authorization: `Bearer ${token}`, // Send token in Authorization header
         },
       });
-      setBranchData(response?.data);
+      setBranchData(response?.data);      
     } catch (error) {
       console.error("Error fetching data:", error); // Handle errors
     }
@@ -54,7 +54,7 @@ const CustomDropDown = () => {
           >
             {/* Branch */}
             {branchData && branchData.length > 0
-              ? branchData[0].branch_name
+              ? branchData[2].branch_name
               : "Branch"}
           </Dropdown.Toggle>
 

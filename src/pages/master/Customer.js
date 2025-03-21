@@ -44,7 +44,7 @@ const Customer = () => {
     const token = JSON.parse(tokenString);
     try {
       const response = await axios.get(
-        `${endpoint}/customer/get/2304?page=${page}&filter_date=${
+        `${endpoint}/customer/get/2306?page=${page}&filter_date=${
           formattedDate || ""
         }`,
         {
